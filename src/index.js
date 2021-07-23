@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './main.css';
+import { BrowserRouter as Router } from "react-router-dom";
+import { GoFigure } from "./components/GoFigure";
+
+import 'bulma/css/bulma.min.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Router>
+        <GoFigure />
+      </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
