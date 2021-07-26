@@ -22,11 +22,14 @@ export const ApplicationViews = () => {
          <Route path="/collection">
              
          </Route>
+         
+        <CollectionProvider>
         <BrickProvider>
             <Route path="/search">
                 <MinifigSearchForm/>
             </Route>
         </BrickProvider>
+        </CollectionProvider>
         </>
     )
 }

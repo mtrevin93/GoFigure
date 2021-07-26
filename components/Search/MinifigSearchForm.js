@@ -5,11 +5,12 @@ import { BrickContext } from "./BrickProvider.js"
 export const MinifigSearchForm = () => {
 
     const { getFigNum } = useContext(BrickContext)
-    const [ types, setTypes, parts, setParts, getParts ] = useContext(CollectionContext)
+    const { getParts } = useContext(CollectionContext)
+    const [types, setTypes] = useContext(CollectionContext)
+    const [parts, setParts] = useContext(CollectionContext)
     
     const getFigParts = (fig) => {
         const figNum = getFigNum(fig)
-        const promises = []
         figNum.results.map(fig => {
             types.find(type => (part.part_cat_id === type.id))
             const part = {
