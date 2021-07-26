@@ -1,9 +1,9 @@
 import React, { useState, createContext } from "react"
 
-export const CollectionProvider = createContext()
+export const CollectionContext = createContext()
 
 //SearchProvider export handles calls for minifig searching by theme or term & destructuring found minifigs into parts
-export const CollectionContext = (props) => {
+export const CollectionProvider = (props) => {
 
     const [types, setTypes] = useState([])
     const [parts, setParts] = useState([])

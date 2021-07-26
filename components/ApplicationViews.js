@@ -1,13 +1,13 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { BrickProvider } from "./Search/BrickProvider.js"
-import { CollectionProvider } from "./Bricks/CollectionProvider.js"
-import { MinifigSearchForm } from "./Search/MinifigSearchForm.js"
+import { BrickProvider } from "./Search/BrickProvider"
+import { CollectionProvider } from "./Bricks/CollectionProvider"
+import { MinifigSearchForm } from "./Search/MinifigSearchForm"
 
 export const ApplicationViews = () => {
     return (
         <>
-         <Route path="/home">
+         <Route exact path="/">
 
          </Route>
 
@@ -22,10 +22,10 @@ export const ApplicationViews = () => {
          <Route path="/collection">
              
          </Route>
-         
+
         <CollectionProvider>
         <BrickProvider>
-            <Route path="/search">
+            <Route exact path="/search">
                 <MinifigSearchForm/>
             </Route>
         </BrickProvider>
