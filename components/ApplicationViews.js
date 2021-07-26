@@ -1,6 +1,8 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { MinifigSearchForm } from "./search/SearchProvider.js     "
+import { BrickProvider } from "./Search/BrickProvider.js"
+import { CollectionProvider } from "./Bricks/CollectionProvider.js"
+import { MinifigSearchForm } from "./Search/MinifigSearchForm.js"
 
 export const ApplicationViews = () => {
     return (
@@ -20,10 +22,11 @@ export const ApplicationViews = () => {
          <Route path="/collection">
              
          </Route>
-
-         <Route path="/search">
-             <MinifigSearchForm/>
-        </Route>
+        <BrickProvider>
+            <Route path="/search">
+                <MinifigSearchForm/>
+            </Route>
+        </BrickProvider>
         </>
     )
 }
