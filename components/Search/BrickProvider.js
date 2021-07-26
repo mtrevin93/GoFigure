@@ -9,8 +9,8 @@ export const BrickProvider = (props) => {
     const [ themes, setThemes ] = useState([])
     const [ bricks, setBricks ] = useState([])
 
-    const getThemesBySearch = ([terms],page) => {
-        return fetch(`https://rebrickable.com/api/v3/lego/minifigs/?key=67defb55cb3d7d95d714dbb8be7e2fe9&page=${page}&page_size=20&search=${terms.length=0? terms[0] : terms[0] + terms.slice(1).map(term => `%20${term}`)}`)
+    const getThemes = () => {
+        return fetch(`https://rebrickable.com/api/v3/lego/themes/?key=67defb55cb3d7d95d714dbb8be7e2fe9&page=1&page_size=1000`)
         .then(res => res.json())
         .then(setThemes)
     }
