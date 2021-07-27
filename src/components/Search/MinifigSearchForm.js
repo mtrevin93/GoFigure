@@ -84,12 +84,12 @@ export const MinifigSearchForm = () => {
                     <div class="select" id="themeId" value={theme}>
                         <select id="theme" onChange={handleControlledInputChange}>
                             <option value="select">Select a Theme</option>
-                            {filteredThemes.map(theme => (
+                            {filteredThemes.map(theme => {
                                 <option key={theme.id} value={theme.id}>
                                 {theme.name}
                                 </option>
-                            )
-                            )}
+                            })
+                            }
                         </select>
                     </div>
                 </div>
