@@ -1,30 +1,49 @@
-import React, { useState, createContext, useContext } from "react"
+import React, { useState, createContext, useContext, useEffect } from "react"
 import { CollectionContext } from "../Bricks/CollectionProvider"
 import { BrickContext } from "./BrickProvider"
 
 export const MinifigSearchForm = () => {
 
-    const { getFigNum } = useContext(BrickContext)
-    const { getParts } = useContext(CollectionContext)
-    const { types, setTypes } = useContext(CollectionContext)
-    const { parts, setParts } = useContext(CollectionContext)
-    
-    const [ themes, setThemes ] = useState({
-        
+    const { themes, getFigNum, searchTerms, setSearchTerms, getThemes, getMinifigsByTheme, figSearch } = useContext(BrickContext)
+    const { getParts, types, setTypes, parts, setParts } = useContext(CollectionContext)
+
+    const [ filteredThemes, setFilteredThemes ] = useState([])
+
+    const [theme, setTheme] = useState({
+        id: null
     })
 
     useEffect(() => {
-        getTypes()
+        getThemes()
     }, [])
 
-    const handleControlledInputChange = (event) => {
-        //Make a copy of friend, update with string value from input. Set to state.
-        const newFriend = { ...friend }
+    useEffect(() => {
+        if (searchTerms !== "") {
+            // If the search field is not blank, display matching themes
+            const subset = themes?.results?.filter(theme => theme.name.toLowerCase().includes(searchTerms))
 
-        newFriend[event.target.id] = event.target.value
+            setFilteredThemes(subset)
+        } else {
+            // If the search field is blank, display all themes
+            setFilteredThemes(themes)
+        }
+    }, [searchTerms, themes])   
+    
+    const handleControlledInputChange = (event) => {
+        /* When changing a state object or array,
+        always create a copy, make changes, and then set state.*/
+        const selectedTheme = { ...theme }
+        /* Theme is an object with properties.
+        Set the property to the new value
+        using object bracket notation. */
+        selectedTheme[event.target.id] = event.target.value
         // update state
-        setFriend(newFriend)
-}
+        setTheme(selectedTheme)
+    }
+
+    const handleClickFindMinifigures = () => {
+        getMinifigsByTheme(theme.id, 1)
+    }
 
     const getFigParts = (fig) => {
         const figNum = getFigNum(fig)
@@ -48,48 +67,50 @@ export const MinifigSearchForm = () => {
         .then(getParts)
     }
 
-
     return (
         <>
-        <div class="columns is-multiline is-centered">
+        <div class="columns is-multiline">
 
-            <div class="field column is-one-half">
+            <div class="field column is-one-half ml-6 mt-6">
                 <label class="label">Search for Themes</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Enter one or more keywords"
-                    id="themes" value={themes} onChange = {handleControlledInputChange} autofocus/>
+                    <input class="input" type="text" placeholder="Search for a Theme"
+                    id="themes" onChange={(event) => setSearchTerms(event.target.value)} autoFocus/>
                 </div>
-                <button class="btn btn-primary"
-                    onClick={event => {
-                        event.preventDefault()
-                        handleClickFindThemes()
-                    }}>
-                    Find Themes
-                </button>
             </div>
 
-            <div class="field column is-one-fourth">
+            <div class="field column is-one-eigth ml-3 mr-3 mt-6">
                 <label class="label">Theme</label>
                 <div class="control">
-                    <div class="select">
-                        <select>
-                            <option>Select a Theme</option>
+                    <div class="select" id="themeId" value={theme}>
+                        <select id="theme" onChange={handleControlledInputChange}>
+                            <option value="select">Select a Theme</option>
+                            {filteredThemes?.map(theme => (
+                                <option key={theme.id} value={theme.id}>
+                                {theme.name}
+                                </option>
+                            )
+                            )}
                         </select>
                     </div>
                 </div>
+            </div>
+
+            <div class="column is one-eigth mt-6">
+                <button class="button is-info is-medium is-rounded mt-5 mr-6" onClick={event => {
+                    event.preventDefault()
+                    handleClickFindMinifigures()
+                }}>
+                        Find Minifigures
+                </button>
+            </div>
+
+            <div class="column is one-fourth">
             </div>
 
 
         </div>
         </>
     )
-
-
-
-
-
 }
 
-        
-
-    
