@@ -12,7 +12,8 @@ export const BrickProvider = (props) => {
     const getThemes = () => {
         return fetch(`https://rebrickable.com/api/v3/lego/themes/?key=67defb55cb3d7d95d714dbb8be7e2fe9&page=1&page_size=1000`)
         .then(res => res.json())
-        .then(setThemes)
+        //Pass anonymous function into .then that calls setThemes so we can pass it an argument
+        .then((themes) => setThemes(themes.results))
     }
 
     const getMinifigsByTheme = (themeId, page) => {

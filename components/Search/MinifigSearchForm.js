@@ -1,27 +1,28 @@
 import React, { useState, createContext, useContext, useEffect } from "react"
 import { CollectionContext } from "../Bricks/CollectionProvider"
 import { BrickContext } from "./BrickProvider"
+import { SearchList } from "./SearchList"
 
 export const MinifigSearchForm = () => {
 
-    const { themes, getFigNum, searchTerms, setSearchTerms, getThemes, getMinifigsByTheme, figSearch } = useContext(BrickContext)
+    const { themes, getFigNum, searchTerms, setSearchTerms, getThemes, getMinifigsByTheme } = useContext(BrickContext)
     const { getParts, types, setTypes, parts, setParts } = useContext(CollectionContext)
 
     const [ filteredThemes, setFilteredThemes ] = useState([])
+    const [ figSearch, setFigSearch ] = useState([])
 
     const [theme, setTheme] = useState({
         id: null
     })
 
     useEffect(() => {
-        getThemes()
+        getThemes().
     }, [])
 
     useEffect(() => {
         if (searchTerms !== "") {
             // If the search field is not blank, display matching themes
-            const subset = themes?.results?.filter(theme => theme.name.toLowerCase().includes(searchTerms))
-
+            const subset = themes.filter(theme => theme.name.toLowerCase().includes(searchTerms))
             setFilteredThemes(subset)
         } else {
             // If the search field is blank, display all themes
@@ -45,28 +46,6 @@ export const MinifigSearchForm = () => {
         getMinifigsByTheme(theme.id, 1)
     }
 
-    const getFigParts = (fig) => {
-        const figNum = getFigNum(fig)
-        figNum.results.map(fig => {
-            types.find(type => (part.part_cat_id === type.id))
-            const part = {
-                "userId": parseInt(sessionStorage.getItem("GoFigure_user")),
-                "rebrickableId": part.part_num,
-                "typeId":types.find(type => part.part_cat_id===type.rebrickableId).id,
-                "img": part.part_img_url,
-                "name": part.name
-            }
-            return fetch("http://localhost:8088/parts", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(part)
-                })
-        })
-        .then(getParts)
-    }
-
     return (
         <>
         <div class="columns is-multiline">
@@ -85,12 +64,11 @@ export const MinifigSearchForm = () => {
                     <div class="select" id="themeId" value={theme}>
                         <select id="theme" onChange={handleControlledInputChange}>
                             <option value="select">Select a Theme</option>
-                            {filteredThemes?.map(theme => (
-                                <option key={theme.id} value={theme.id}>
+                             {filteredThemes.map(theme => {
+                                return <option key={theme.id} value={theme.id}>
                                 {theme.name}
                                 </option>
-                            )
-                            )}
+                            })}
                         </select>
                     </div>
                 </div>
@@ -110,7 +88,7 @@ export const MinifigSearchForm = () => {
 
 
         </div>
-        </>
-    )
+        <SearchList minifigs={figSearch}/>
+    </>
+)
 }
-
