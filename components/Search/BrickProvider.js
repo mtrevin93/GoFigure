@@ -19,7 +19,7 @@ export const BrickProvider = (props) => {
     const getMinifigsByTheme = (themeId, page) => {
         return fetch(`https://rebrickable.com/api/v3/lego/minifigs/?key=67defb55cb3d7d95d714dbb8be7e2fe9&page=${page}&page_size=20&in_theme_id=${themeId}`)
         .then(res => res.json())
-        .then(setFigSearch)
+        .then((figs) => setFigSearch(figs.results))
     }
 
     const getMinifigsBySearch = ([terms],page) => {
@@ -38,7 +38,7 @@ export const BrickProvider = (props) => {
 
     return (
         <BrickContext.Provider value={{
-            themes, getThemes, getMinifigsByTheme, getMinifigsBySearch, getFigNum, searchTerms, setSearchTerms
+            themes, getThemes, getMinifigsByTheme, getMinifigsBySearch, getFigNum, searchTerms, setSearchTerms, figSearch, setFigSearch
         }}>
             {props.children}
         </BrickContext.Provider>
