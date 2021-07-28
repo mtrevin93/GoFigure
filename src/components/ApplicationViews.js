@@ -4,6 +4,7 @@ import { BrickProvider } from "./Search/BrickProvider"
 import { CollectionProvider } from "./Bricks/CollectionProvider"
 import { MinifigSearchForm } from "./Search/MinifigSearchForm"
 import { SearchDetail } from "./Search/SearchDetail"
+import { BrickList } from "./Bricks/BrickList"
 
 export const ApplicationViews = () => {
     return (
@@ -12,9 +13,11 @@ export const ApplicationViews = () => {
 
          </Route>
 
-         <Route path="/bricks">
-
-         </Route>
+        <CollectionProvider>
+            <Route path="/bricks">
+                <BrickList/>
+            </Route>
+        </CollectionProvider>
 
          <Route path="/build">
 

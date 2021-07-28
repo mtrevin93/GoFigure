@@ -17,12 +17,12 @@ const getFigParts = () => {
         types.find(type => (piece.part.part_cat_id === type.id))
         const part = {
             "userId": parseInt(sessionStorage.getItem("GoFigure_user")),
-            "rebrickableId": piece.part_num,
+            "rebrickableId": piece.part.part_num,
             "typeId":types.find(type => piece.part.part_cat_id===type.rebrickableId).id,
             "img": piece.part.part_img_url,
             "name": piece.part.name
         }
-        if(parts.find(() => part.userId === parseInt(sessionStorage.getItem("GoFigure_user"))) && part.rebrickableId === piece.part_num){
+        if(parts.some(brick => brick.rebrickableId === piece.part.part_num && brick.userId === parseInt(sessionStorage.getItem("GoFigure_user")))){
             console.log("Part already in user inventory")
         }
         else{

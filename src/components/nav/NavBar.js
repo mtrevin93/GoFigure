@@ -71,7 +71,7 @@ export const NavBar = (props) => {
 
         <div class="navbar-dropdown">
           <a class="navbar-item">
-          <Link to="/search">
+          <Link to="/bricks">
           My Pieces
           </Link>
           </a>
