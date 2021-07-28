@@ -19,10 +19,16 @@ export const CollectionProvider = (props) => {
         .then(res => res.json())
         .then(setParts)
     }
+    const removePart = (partId) => {
+        return fetch(`http://localhost:8088/parts/${partId}`, {
+          method: "DELETE"
+        })
+          .then(getParts)
+    }
 
     return (
         <CollectionContext.Provider value ={{
-            getTypes, getParts
+            getTypes, getParts, types, parts, removePart
         }}>
             {props.children}
         </CollectionContext.Provider>

@@ -1,12 +1,10 @@
-import React, { useState, createContext, useContext, useEffect } from "react"
-import { CollectionContext } from "../Bricks/CollectionProvider"
+import React, { useState, useContext, useEffect } from "react"
 import { BrickContext } from "./BrickProvider"
 import { SearchList } from "./SearchList"
 
 export const MinifigSearchForm = () => {
 
     const { themes, getFigNum, searchTerms, setSearchTerms, getThemes, getMinifigsByTheme, figSearch, setFigSearch } = useContext(BrickContext)
-    const { getParts, types, setTypes, parts, setParts } = useContext(CollectionContext)
 
     const [ filteredThemes, setFilteredThemes ] = useState([])
 
@@ -17,10 +15,6 @@ export const MinifigSearchForm = () => {
     useEffect(() => {
         getThemes()
     }, [])
-
-useEffect(() => {
-    console.log(figSearch)
-}, [figSearch])
 
     useEffect(() => {
         if (searchTerms !== "") {
