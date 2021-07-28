@@ -22,7 +22,7 @@ export const CollectionProvider = (props) => {
 
     return (
         <CollectionContext.Provider value ={{
-            getTypes, getParts
+            getTypes, getParts, types, parts
         }}>
             {props.children}
         </CollectionContext.Provider>

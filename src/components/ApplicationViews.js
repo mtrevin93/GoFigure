@@ -3,6 +3,7 @@ import { Route } from "react-router-dom"
 import { BrickProvider } from "./Search/BrickProvider"
 import { CollectionProvider } from "./Bricks/CollectionProvider"
 import { MinifigSearchForm } from "./Search/MinifigSearchForm"
+import { SearchDetail } from "./Search/SearchDetail"
 
 export const ApplicationViews = () => {
     return (
@@ -27,6 +28,9 @@ export const ApplicationViews = () => {
         <BrickProvider>
             <Route exact path="/search">
                 <MinifigSearchForm/>
+            </Route>
+            <Route path="/search/detail/">
+                <SearchDetail/>
             </Route>
         </BrickProvider>
         </CollectionProvider>
