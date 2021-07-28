@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { CollectionContext } from "../Bricks/CollectionProvider"
+import  "./FigBuilder.css"
 
 export const FigBuilder = () => {
 
@@ -92,29 +93,29 @@ return(
     <div class="columns is-multiline">
         <div class="column is-4 my-2">
             <div class="rows">
-                <div class="row m-6">
-                    <button class="button is-primary m-6" onClick = {event => {
+                <div class="headwear row m-3">
+                    <button class="button is-primary m-5" onClick = {event => {
                         event.preventDefault()
                         changeHeadwearCounter(-1)}}>
                         Previous
                     </button>
                 </div>
-                <div class="row m-6">
-                    <button class="button is-primary m-6" onClick = {event => {
+                <div class="head row m-3">
+                    <button class="button is-primary m-5" onClick = {event => {
                         event.preventDefault()
                         changeHeadCounter(-1)}}>
                         Previous
                     </button>
                 </div>
-                <div class="row m-6">
-                    <button class="button is-primary m-6" onClick = {event => {
+                <div class="torso row m-3">
+                    <button class="button is-primary m-5" onClick = {event => {
                         event.preventDefault()
                         changeTorsoCounter(-1)}}>
                         Previous
                     </button>
                 </div>
-                <div class="row m-6">
-                    <button class="button is-primary m-6" onClick = {event => {
+                <div class="legs row m-3">
+                    <button class="button is-primary m-5" onClick = {event => {
                         event.preventDefault()
                         changeLegsCounter(-1)}}>
                         Previous
@@ -124,57 +125,65 @@ return(
         </div>
         <div class="column is-4 my-2">
             <div class="rows">
-                <div class="row m-6">
-                    <img src=
-                        {myHeadwear[headwearCounter]? 
-                         myHeadwear[headwearCounter]?.img : myHeadwear[0]?.img}>
-                    </img>
+                <div class="headwear row mz-6">
+                    <figure class="image is-96x96 my--6">
+                        <img class="headwear"src=
+                            {myHeadwear[headwearCounter]? 
+                            myHeadwear[headwearCounter]?.img : myHeadwear[0]?.img}>
+                        </img>
+                    </figure>
                     </div>
-                <div class="row m-6">
-                    <img src=
-                        {myHeads[headCounter]? 
-                         myHeads[headCounter]?.img : myHeads[0]?.img}>
-                    </img>
+                <div class="head row mz-6">
+                    <figure class="image is-96x96 my--6">
+                        <img class="heads"src=
+                            {myHeads[headCounter]? 
+                            myHeads[headCounter]?.img : myHeads[0]?.img}>
+                        </img>
+                    </figure>
                 </div>
-                <div class="row m-6">
-                    <img src=
-                        {myTorsos[torsoCounter]? 
-                         myTorsos[torsoCounter]?.img : myTorsos[0]?.img}>
-                    </img>
+                <div class="torso row mz-6">
+                    <figure class="image is-128x128 my--6">
+                        <img class="torsos"src=
+                            {myTorsos[torsoCounter]? 
+                            myTorsos[torsoCounter]?.img : myTorsos[0]?.img}>
+                        </img>
+                    </figure>
                 </div>
-                <div class="row m-6">
-                    <img src=
-                        {myLegs[legsCounter]? 
-                         myLegs[legsCounter]?.img : myLegs[0]?.img}>
-                    </img>
+                <div class="legs row mz-6">
+                    <figure class="image is-128x128 my--6">
+                        <img class="legs"src=
+                            {myLegs[legsCounter]? 
+                            myLegs[legsCounter]?.img : myLegs[0]?.img}>
+                        </img>
+                    </figure>
                 </div>
             </div>
         </div>
         <div class="column is-4 my-2">
             <div class="rows">
-                <div class="row m-6">
-                    <button class="button is-primary m-6" onClick = {event => {
+                <div class="headwear row m-3 my-3">
+                    <button class="button is-primary m-5" onClick = {event => {
                         event.preventDefault()
                         changeHeadwearCounter(1)}}>
                         Next
                     </button>
                 </div>
-                <div class="row m-6">
-                <button class="button is-primary m-6" onClick = {event => {
+                <div class="head row m-3 my-3">
+                <button class="button is-primary m-5" onClick = {event => {
                         event.preventDefault()
                         changeHeadCounter(1)}}>
                         Next
                     </button>
                 </div>
-                <div class="row m-6">
-                    <button class="button is-primary m-6" onClick = {event => {
+                <div class="torso row m-3 my-3">
+                    <button class="button is-primary m-5" onClick = {event => {
                         event.preventDefault()
                         changeTorsoCounter(1)}}>
                         Next
                     </button>
                 </div>
-                <div class="row m-6">
-                    <button class="button is-primary m-6" onClick = {event => {
+                <div class="legs row m-3 my-3">
+                    <button class="button is-primary m-5" onClick = {event => {
                         event.preventDefault()
                         changeLegsCounter(1)}}>
                         Next
