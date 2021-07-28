@@ -5,20 +5,22 @@ export const BrickContext = createContext()
 //SearchProvider export handles calls for minifig searching by theme or term & destructuring found minifigs into parts
 export const BrickProvider = (props) => {
 
-    const [ themes, setThemes ] = useState([])
-    const [ figSearch, setFigSearch ] = useState([])
     const [ searchTerms, setSearchTerms ] = useState("")
+    const [ figSearch, setFigSearch ] = useState([])
+    const [ themes, setThemes ] = useState([])
+    const [ figNum, setFigNum ] = useState([])
 
     const getThemes = () => {
         return fetch(`https://rebrickable.com/api/v3/lego/themes/?key=67defb55cb3d7d95d714dbb8be7e2fe9&page=1&page_size=1000`)
         .then(res => res.json())
-        .then(setThemes)
+        //Pass anonymous function into .then that calls setThemes so we can pass it an argument
+        .then((themes) => setThemes(themes.results))
     }
 
     const getMinifigsByTheme = (themeId, page) => {
         return fetch(`https://rebrickable.com/api/v3/lego/minifigs/?key=67defb55cb3d7d95d714dbb8be7e2fe9&page=${page}&page_size=20&in_theme_id=${themeId}`)
         .then(res => res.json())
-        .then(setFigSearch)
+        .then((figs) => setFigSearch(figs.results))
     }
 
     const getMinifigsBySearch = ([terms],page) => {
@@ -27,17 +29,15 @@ export const BrickProvider = (props) => {
         .then(setFigSearch)
     }
 
-    const getFigNum = (fig) => {
-        return fetch(`https://rebrickable.com/api/v3/lego/minifigs/${fig.set_num}/parts/?key=67defb55cb3d7d95d714dbb8be7e2fe9`)
+    const getFigNum = (setNum) => {
+        return fetch(`https://rebrickable.com/api/v3/lego/minifigs/${setNum}/parts/?key=67defb55cb3d7d95d714dbb8be7e2fe9`)
         .then(res => res.json())
-        .then((fig) => {
-            return fig
-        }
-        )}
+        // .then(setFigNum)
+    }
 
     return (
         <BrickContext.Provider value={{
-            themes, getThemes, getMinifigsByTheme, getMinifigsBySearch, getFigNum, searchTerms, setSearchTerms
+            themes, getThemes, getMinifigsByTheme, getMinifigsBySearch, getFigNum, searchTerms, setSearchTerms, figSearch, setFigSearch, setFigNum, figNum
         }}>
             {props.children}
         </BrickContext.Provider>
