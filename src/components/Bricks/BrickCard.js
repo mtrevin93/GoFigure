@@ -11,11 +11,11 @@ removePart(part.id)
 
 return (
     <>
-    <div class="column is-2 my-2">
+    <div class="column is-2 my-2 height">
         <figure class="image is-square">
             <img src={part.img}/>
         </figure>
-        <div class="subtitle my-1">{part.name}</div>
+        <text class="textarea is-small my-1">{part.name}</text>
         <button class="button is-danger is-small mt-6" onClick={event => {
             event.preventDefault()
             handleClickRemoveBrick()
@@ -26,3 +26,4 @@ return (
     
     </>
 )}  
+
