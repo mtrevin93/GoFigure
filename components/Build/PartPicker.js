@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { CollectionContext } from "../Bricks/CollectionProvider"
+import { FigContext } from "./FigProvider"
 import  "./PartPicker.css"
 
 export const PartPicker = () => {
@@ -25,20 +26,13 @@ const myTorsos = parts.filter(part => part.userId
 const myLegs = parts.filter(part => part.userId 
     === parseInt(sessionStorage.getItem("GoFigure_user")) && part.typeId === 4)
 
-    
+    const { minifigure, setMinifigure } = useContext(FigContext)
+
     const [headwearCounter, setHeadwearCounter] = useState(0)
     const [headCounter, setHeadCounter] = useState(0)
     const [torsoCounter, setTorsoCounter] = useState(0)
     const [legsCounter, setLegsCounter] = useState(0)
     
-    const [minifigure, setMinifigure] = useState({
-        userId: 0,
-        headwearId: 0,
-        headId: 0,
-        torsoId: 0,
-        legsId: 0
-      });
-
       const downHeadCounter = () => {
     
         let newHeadCounter = parseInt(headCounter)
@@ -136,7 +130,7 @@ const handleControlledHeadwearChange = (event) => {
     /* Minifigure is an object with properties.
     Set the property to the new value
     using object bracket notation. */
-    newMinifigure[event.target.id] = newPart.id
+    newMinifigure.headwearId = newPart.id
     // update state
     setMinifigure(newMinifigure)
 }
@@ -149,7 +143,7 @@ const handleControlledHeadChange = (event) => {
     /* Minifigure is an object with properties.
     Set the property to the new value
     using object bracket notation. */
-    newMinifigure[event.target.id] = newPart.id
+    newMinifigure.headId = newPart.id
     // update state
     setMinifigure(newMinifigure)
 }
@@ -164,7 +158,7 @@ const handleControlledTorsoChange = (event) => {
     /* Minifigure is an object with properties.
     Set the property to the new value
     using object bracket notation. */
-    newMinifigure[event.target.id] = newPart.id
+    newMinifigure.torsoId = newPart.id
     // update state
     setMinifigure(newMinifigure)
 }
@@ -179,13 +173,35 @@ const handleControlledLegsChange = (event) => {
     /* Minifigure is an object with properties.
     Set the property to the new value
     using object bracket notation. */
-    newMinifigure[event.target.id] = newPart.id
+    newMinifigure.legsId = newPart.id
     // update state
     setMinifigure(newMinifigure)
 }
 
 const navigate = () => {
     history.push("/build")
+}
+
+const checkHeadwear() => 
+if(minifigure.headwearId === 0){
+    let newMinifigure = {...minifigure}
+    newMinifigure.headwearId = myHeadwear[0].id
+    setMinifigure(newMinifigure)
+}
+if(minifigure.headId === 0){
+    let newMinifigure = {...minifigure}
+    newMinifigure.headId = myHeads[0].id
+    setMinifigure(newMinifigure)
+}
+if(minifigure.torsoId === 0){
+    let newMinifigure = {...minifigure}
+    newMinifigure.torsoId = myTorsos[0].id
+    setMinifigure(newMinifigure)
+}
+if(minifigure.legsId === 0){
+    let newMinifigure = {...minifigure}
+    newMinifigure.legsId = myLegs[0].id
+    setMinifigure(newMinifigure)
 }
 
 return(
@@ -322,7 +338,14 @@ return(
     </div>
     </section>
     <section class="section">
-        <button class="button is-success is-pulled-right" onClick={navigate}>
+        <button class="button is-success is-pulled-right" onClick={event => {
+            event.preventDefault()
+            checkHeadwear()
+            checkHead()
+            checkTorso()
+            checkLegs()
+            navigate()
+        }}>
             Use These Parts
         </button>
     </section>

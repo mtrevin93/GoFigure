@@ -6,6 +6,8 @@ import { MinifigSearchForm } from "./Search/MinifigSearchForm"
 import { SearchDetail } from "./Search/SearchDetail"
 import { BrickList } from "./Bricks/BrickList"
 import { PartPicker } from "./Build/PartPicker"
+import { FigProvider } from "./Build/FigProvider"
+import { FigBuilder } from "./Build/FigBuilder"
 
 export const ApplicationViews = () => {
     return (
@@ -20,14 +22,16 @@ export const ApplicationViews = () => {
             </Route>
         </CollectionProvider>
         
+        <FigProvider>
         <CollectionProvider>        
             <Route path="/sketch">
                 <PartPicker/>
             </Route>
             <Route path="/build">
-                {/* <FigBuilder/> */}
+                <FigBuilder/>
             </Route>
         </CollectionProvider>
+        </FigProvider>
 
          <Route path="/collection">
              
