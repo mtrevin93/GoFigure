@@ -57,8 +57,8 @@ export const NavBar = (props) => {
           </Link>
           </a>
           <a class="navbar-item">
-            <Link to="/build">
-            Build a Fig
+            <Link to="/sketch">
+            Sketch a Fig
             </Link>
           </a>
         </div>

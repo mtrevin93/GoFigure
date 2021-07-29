@@ -5,7 +5,7 @@ import { CollectionProvider } from "./Bricks/CollectionProvider"
 import { MinifigSearchForm } from "./Search/MinifigSearchForm"
 import { SearchDetail } from "./Search/SearchDetail"
 import { BrickList } from "./Bricks/BrickList"
-import { FigBuilder } from "./Build/FigBuilder"
+import { PartPicker } from "./Build/PartPicker"
 
 export const ApplicationViews = () => {
     return (
@@ -21,8 +21,11 @@ export const ApplicationViews = () => {
         </CollectionProvider>
         
         <CollectionProvider>        
+            <Route path="/sketch">
+                <PartPicker/>
+            </Route>
             <Route path="/build">
-                <FigBuilder/>
+                {/* <FigBuilder/> */}
             </Route>
         </CollectionProvider>
 
