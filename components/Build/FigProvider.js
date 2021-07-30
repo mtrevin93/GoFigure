@@ -5,12 +5,13 @@ export const FigContext = createContext()
 export const FigProvider = (props) => {
 
 const [minifigure, setMinifigure] = useState({
+    id: 0,
     userId: 0,
     headwearId: 0,
     headId: 0,
     torsoId: 0,
     legsId: 0,
-    title: "",
+    name: "",
     description: "",
     img: null
 
@@ -25,6 +26,7 @@ return fetch("http://localhost:8088/savedFigs", {
         body: JSON.stringify(fig)
     })
     .then(response => response.json())
+    .then((response) => setMinifigure(response))
 }
 
 const updateFig = fig => {

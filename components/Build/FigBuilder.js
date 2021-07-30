@@ -46,7 +46,8 @@ const uploadImage = () => {
     const handleClickSaveMinifigure = (event) => {
 
         const newMinifigure = {...minifigure}
-        
+        newMinifigure.userId = parseInt(sessionStorage.getItem("GoFigure_user"))
+
             if(minifigure.headwearId === 0 || minifigure.headId === 0 || 
             minifigure.torsoId === 0 || minifigure.legsId ===0){
                 history.push("/sketch")
@@ -71,7 +72,7 @@ return (
         <img class = "image is-3by-4" src={minifigure.img}/>
         <div class="rows m-3">
             <input class="row is-full m-1" type="file" onChange= {(e)=> setImage(e.target.files[0])}></input>
-            <button class="row is-full m-1" onClick={uploadImage}>Upload</button>
+            <button class="button is-info row is-full m-1" onClick={uploadImage}>Upload</button>
         </div>
     </div>
     : 
@@ -82,7 +83,7 @@ return (
         <img class = "image is-128x128" src={parts.find(part => part.id === minifigure.legsId).img}/>
         <div class="rows m-3">
             <input class="row is-full m-1" type="file" onChange= {(e)=> setImage(e.target.files[0])}></input>
-            <button class="row is-full m-1" onClick={uploadImage}>Upload</button>
+            <button class="button is-info row is-full m-1" onClick={uploadImage}>Upload</button>
         </div>
     </div>}
 
@@ -114,27 +115,25 @@ return (
         <label class="label">Name Your Minifig:</label>
         <fieldset>
             <div class="form-group">
-              <input type="textarea is-large mz-6" class="nameTextInput mz-6" id="name" required autoFocus className="form-control" placeholder="Name" value={minifigure.name} onChange={handleControlledInputChange} 
-              defaultValue={minifigure.name}/>
+              <input class="input nameTextInput mz-6" type="text is-large mz-6"  id="name" required autoFocus class="form-control" placeholder="Name" value={minifigure.name} onChange={handleControlledInputChange} 
+              defaultValue=""/>
             </div>
         </fieldset>
 </div>
 <div class="field">
-        <label class="label">Tell Us About Them</label>
+        <label class="label">Tell Us About Them:</label>
         <fieldset>
             <div class="form-group">
-              <input type="textarea is-large mz-6" class="descriptionTextInput mz-6"  id="description" required autoFocus className="form-control" placeholder="Description" value={minifigure.description} onChange={handleControlledInputChange} 
-              defaultValue={minifigure.description}/>
+              <input class="input descriptionTextInput mz-6" type="text is-large mz-6"   id="description" required autoFocus class="form-control" placeholder="Description" value={minifigure.description} onChange={handleControlledInputChange} 
+              defaultValue=""/>
             </div>
         </fieldset>
 </div> 
     </div>
 </div>
-<div class="button">
-    <button class="is-primary" onClick={handleClickSaveMinifigure}>
+    <button class="button is-success is-medium is-pulled-right" onClick={handleClickSaveMinifigure}>
         Save
     </button>
-</div>
 </section>
 )
 }
