@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom"
 
 export const FigBuilder = () => {
     
-    const { minifigure, setMinifigure, updateFig } = useContext(FigContext)
+    const { minifigure, setMinifigure, updateFig, postFig } = useContext(FigContext)
     const { parts } = useContext(CollectionContext)
     const [image, setImage ] = useState("");
     const history=useHistory()
@@ -52,13 +52,24 @@ const uploadImage = () => {
             minifigure.torsoId === 0 || minifigure.legsId ===0){
                 history.push("/sketch")
             }
-            else if(minifigure.name=""||minifigure.description===0){
+            else if( newMinifigure.name="" || newMinifigure.description===""){
                 window.alert("Your minifig needs a name and description")
                 return
             }
             else{
-                updateFig(newMinifigure)
-                .then(() => history.push("/profile"))
+                postFig(newMinifigure)
+                const resetMinifigure = {
+                userId: 0,
+                headwearId: 0,
+                headId: 0,
+                torsoId: 0,
+                legsId: 0,
+                name: "",
+                description: "",
+                img: null
+                }
+                setMinifigure(resetMinifigure)
+                history.push("/profile")
             }
     }
 
