@@ -40,19 +40,43 @@ const myLegs = parts.filter(part => part.userId
         if(newHeadCounter < 0){
             newHeadCounter = myHeads.length-1
             setHeadCounter(parseInt(newHeadCounter))
+            let newMinifigure = {...minifigure}
+            const newPart = myHeads[newHeadCounter]
+            newMinifigure.headId = newPart.id
+            // update state
+            setMinifigure(newMinifigure)
         }
-        setHeadCounter(parseInt(newHeadCounter))
+        else{setHeadCounter(parseInt(newHeadCounter))
+            let newMinifigure = {...minifigure}
+            const newPart = myHeads[newHeadCounter]
+            newMinifigure.headId = newPart.id
+            // update state
+            setMinifigure(newMinifigure)
+        }
     }
     
     const upHeadCounter = () => {
     
         let newHeadCounter = parseInt(headCounter)
-        newHeadCounter = newHeadCounter + 1
-        if(newHeadCounter === myHeads.length){
+        if(newHeadCounter === myHeads.length-1){
             newHeadCounter = 0
             setHeadCounter(parseInt(newHeadCounter))
+            let newMinifigure = {...minifigure}
+            const newPart = myHeads[newHeadCounter]
+            newMinifigure.headId = newPart.id
+            // update state
+            setMinifigure(newMinifigure)
         }
-        setHeadCounter(newHeadCounter)
+        else {
+            let newHeadCounter = parseInt(headCounter)
+            newHeadCounter = newHeadCounter + 1
+            setHeadCounter(newHeadCounter)
+            let newMinifigure = {...minifigure}
+            const newPart = myHeads[newHeadCounter]
+            newMinifigure.headId = newPart.id
+            // update state
+            setMinifigure(newMinifigure)
+        }
     }
 
 const downLegsCounter = () => {
@@ -62,19 +86,43 @@ const downLegsCounter = () => {
     if(newLegsCounter < 0){
         newLegsCounter = myLegs.length-1
         setLegsCounter(parseInt(newLegsCounter))
+        let newMinifigure = {...minifigure}
+        const newPart = myLegs[newLegsCounter]
+        newMinifigure.legsId = newPart.id
+        // update state
+        setMinifigure(newMinifigure)
     }
-    setLegsCounter(parseInt(newLegsCounter))
+    else {setLegsCounter(parseInt(newLegsCounter))
+        let newMinifigure = {...minifigure}
+        const newPart = myLegs[newLegsCounter]
+        newMinifigure.legsId = newPart.id
+        // update state
+        setMinifigure(newMinifigure)
+    }
 }
 
 const upLegsCounter = () => {
 
     let newLegsCounter = parseInt(legsCounter)
-    newLegsCounter = newLegsCounter + 1
-    if(newLegsCounter === myLegs.length){
+    if(newLegsCounter === myLegs.length-1){
         newLegsCounter = 0
         setLegsCounter(parseInt(newLegsCounter))
+        let newMinifigure = {...minifigure}
+        const newPart = myLegs[newLegsCounter]
+        newMinifigure.legsId = newPart.id
+        // update state
+        setMinifigure(newMinifigure)
     }
-    setLegsCounter(newLegsCounter)
+    else {
+        let newLegsCounter = parseInt(legsCounter)
+        newLegsCounter = newLegsCounter + 1
+        setLegsCounter(newLegsCounter)
+        let newMinifigure = {...minifigure}
+        const newPart = myLegs[newLegsCounter]
+        newMinifigure.legsId = newPart.id
+        // update state
+        setMinifigure(newMinifigure)
+    }
 }
 
 const downTorsoCounter = () => {
@@ -84,19 +132,44 @@ const downTorsoCounter = () => {
     if(newTorsoCounter < 0){
         newTorsoCounter = myTorsos.length-1
         setTorsoCounter(parseInt(newTorsoCounter))
+        let newMinifigure = {...minifigure}
+        const newPart = myTorsos[newTorsoCounter]
+        newMinifigure.torsoId = newPart.id
+        // update state
+        setMinifigure(newMinifigure)
     }
-    setTorsoCounter(parseInt(newTorsoCounter))
+    else {setTorsoCounter(parseInt(newTorsoCounter))
+        let newMinifigure = {...minifigure}
+        const newPart = myTorsos[newTorsoCounter]
+        newMinifigure.torsoId = newPart.id
+        // update state
+        setMinifigure(newMinifigure)
+
+    }
 }
 
 const upTorsoCounter = () => {
 
     let newTorsoCounter = parseInt(torsoCounter)
-    newTorsoCounter = newTorsoCounter + 1
-    if(newTorsoCounter === myTorsos.length){
+    if(newTorsoCounter === myTorsos.length-1){
         newTorsoCounter = 0
         setTorsoCounter(parseInt(newTorsoCounter))
+        let newMinifigure = {...minifigure}
+        const newPart = myTorsos[newTorsoCounter]
+        newMinifigure.torsoId = newPart.id
+        // update state
+        setMinifigure(newMinifigure)
     }
-    setTorsoCounter(newTorsoCounter)
+    else {
+        let newTorsoCounter = parseInt(torsoCounter)
+        newTorsoCounter = newTorsoCounter + 1
+        setTorsoCounter(newTorsoCounter)
+        let newMinifigure = {...minifigure}
+        const newPart = myTorsos[newTorsoCounter]
+        newMinifigure.torsoId = newPart.id
+        // update state
+        setMinifigure(newMinifigure)
+    }
 }
 
 const downHeadwearCounter = () => {
@@ -106,103 +179,82 @@ const downHeadwearCounter = () => {
     if(newHeadwearCounter < 0){
         newHeadwearCounter = myHeadwear.length-1
         setHeadwearCounter(parseInt(newHeadwearCounter))
+        let newMinifigure = {...minifigure}
+        const newPart = myHeadwear[newHeadwearCounter]
+        newMinifigure.headwearId = newPart.id
+        // update state
+        setMinifigure(newMinifigure)
     }
-    setHeadwearCounter(parseInt(newHeadwearCounter))
+    else{setHeadwearCounter(parseInt(newHeadwearCounter))
+    let newMinifigure = {...minifigure}
+        const newPart = myHeadwear[newHeadwearCounter]
+        newMinifigure.headwearId = newPart.id
+        // update state
+        setMinifigure(newMinifigure)
+    }
 }
 
 const upHeadwearCounter = () => {
 
     let newHeadwearCounter = parseInt(headwearCounter)
-    newHeadwearCounter = newHeadwearCounter + 1
-    if(newHeadwearCounter === myHeadwear.length){
+    if(newHeadwearCounter === myHeadwear.length-1){
         newHeadwearCounter = 0
         setHeadwearCounter(parseInt(newHeadwearCounter))
+        let newMinifigure = {...minifigure}
+        const newPart = myHeadwear[newHeadwearCounter]
+        newMinifigure.headwearId = newPart.id
+        // update state
+        setMinifigure(newMinifigure)
     }
-    setHeadwearCounter(newHeadwearCounter)
-}
-
-const handleControlledHeadwearChange = (event) => {
-
-    /* When changing a state object or array,
-    always create a copy, make changes, and then set state.*/
-    let newMinifigure = {...minifigure}
-    const newPart = myHeadwear[headwearCounter]
-    /* Minifigure is an object with properties.
-    Set the property to the new value
-    using object bracket notation. */
-    newMinifigure.headwearId = newPart.id
-    // update state
-    setMinifigure(newMinifigure)
-}
-const handleControlledHeadChange = (event) => {
-    /* When changing a state object or array,
-    always create a copy, make changes, and then set state.*/
-    let newMinifigure = {...minifigure}
-
-    const newPart = myHeads[parseInt(event.target.value)]
-    /* Minifigure is an object with properties.
-    Set the property to the new value
-    using object bracket notation. */
-    newMinifigure.headId = newPart.id
-    // update state
-    setMinifigure(newMinifigure)
-}
-
-const handleControlledTorsoChange = (event) => {
-
-    /* When changing a state object or array,
-    always create a copy, make changes, and then set state.*/
-    let newMinifigure = {...minifigure}
-
-    const newPart = myTorsos[parseInt(event.target.value)]
-    /* Minifigure is an object with properties.
-    Set the property to the new value
-    using object bracket notation. */
-    newMinifigure.torsoId = newPart.id
-    // update state
-    setMinifigure(newMinifigure)
-}
-
-const handleControlledLegsChange = (event) => {
-
-    /* When changing a state object or array,
-    always create a copy, make changes, and then set state.*/
-    let newMinifigure = {...minifigure}
-
-    const newPart = myLegs[parseInt(event.target.value)]
-    /* Minifigure is an object with properties.
-    Set the property to the new value
-    using object bracket notation. */
-    newMinifigure.legsId = newPart.id
-    // update state
-    setMinifigure(newMinifigure)
+    else {
+        let newHeadwearCounter = parseInt(headwearCounter)
+        newHeadwearCounter = newHeadwearCounter + 1
+        setHeadwearCounter(newHeadwearCounter)
+        let newMinifigure = {...minifigure}
+        const newPart = myHeadwear[newHeadwearCounter]
+        newMinifigure.headwearId = newPart.id
+        // update state
+        setMinifigure(newMinifigure)
+    }
 }
 
 const navigate = () => {
     history.push("/build")
 }
 
-const checkHeadwear() => 
-if(minifigure.headwearId === 0){
-    let newMinifigure = {...minifigure}
-    newMinifigure.headwearId = myHeadwear[0].id
-    setMinifigure(newMinifigure)
-}
+const checkHead = (newMinifigure) => {
 if(minifigure.headId === 0){
-    let newMinifigure = {...minifigure}
     newMinifigure.headId = myHeads[0].id
     setMinifigure(newMinifigure)
+    checkTorso(newMinifigure)}
+    else{checkTorso(newMinifigure)}
 }
-if(minifigure.torsoId === 0){
-    let newMinifigure = {...minifigure}
-    newMinifigure.torsoId = myTorsos[0].id
-    setMinifigure(newMinifigure)
-}
-if(minifigure.legsId === 0){
-    let newMinifigure = {...minifigure}
-    newMinifigure.legsId = myLegs[0].id
-    setMinifigure(newMinifigure)
-}
+
+const checkHeadwear = () => {
+    if(minifigure.headwearId === 0){
+        let newMinifigure = {...minifigure}
+        newMinifigure.headwearId = myHeadwear[0].id
+        setMinifigure(newMinifigure)
+        checkHead(newMinifigure)}
+    else{let newMinifigure={...minifigure}
+    checkHead(newMinifigure)}
+    }
+
+const checkTorso = (newMinifigure) => {
+    if(minifigure.torsoId === 0){
+        newMinifigure.torsoId = myTorsos[0].id
+        setMinifigure(newMinifigure)
+        checkLegs(newMinifigure)}
+        else{checkLegs(newMinifigure)}
+        }
+    
+const checkLegs = (newMinifigure) => {
+    if(minifigure.legsId === 0){
+        newMinifigure.legsId = myLegs[0].id
+        setMinifigure(newMinifigure)
+        navigate()}
+        else{navigate()}
+        }
 
 return(
 <>
@@ -214,11 +266,10 @@ return(
         <div class="column is-4 my-2">
             <div class="rows">
                 <div class="headwear row m-3">
-                    <button class="button is-primary m-5" id="headwearId" value={[headwearCounter]} 
+                    <button class="button is-primary m-5" id="headwearId"  
                      onClick = {event => {
                         event.preventDefault()
                         downHeadwearCounter()
-                        handleControlledHeadwearChange(event)
                         }}>
                         Previous
                     </button>
@@ -228,7 +279,6 @@ return(
                      onClick = {event => {
                         event.preventDefault()
                         downHeadCounter()
-                        handleControlledHeadChange(event)
                         }}>
                         Previous
                     </button>
@@ -238,7 +288,6 @@ return(
                      onClick = {event => {
                         event.preventDefault()
                         downTorsoCounter()
-                        handleControlledTorsoChange(event)
                         }}>
                         Previous
                     </button>
@@ -248,7 +297,6 @@ return(
                      onClick = {event => {
                         event.preventDefault()
                         downLegsCounter()
-                        handleControlledLegsChange(event)
                         }}>
                         Previous
                     </button>
@@ -298,7 +346,6 @@ return(
                      onClick = {event => {
                         event.preventDefault()
                         upHeadwearCounter()
-                        handleControlledHeadwearChange(event)
                         }}>
                         Next
                     </button>
@@ -308,7 +355,6 @@ return(
                      onClick = {event => {
                         event.preventDefault()
                         upHeadCounter()
-                        handleControlledHeadChange(event)
                         }}>
                         Next
                     </button>
@@ -318,7 +364,6 @@ return(
                      onClick = {event => {
                         event.preventDefault()
                         upTorsoCounter()
-                        handleControlledTorsoChange(event)
                         }}>
                         Next
                     </button>
@@ -328,7 +373,6 @@ return(
                      onClick = {event => {
                         event.preventDefault()
                         upLegsCounter()
-                        handleControlledLegsChange(event)
                         }}>
                         Next
                     </button>
@@ -341,10 +385,6 @@ return(
         <button class="button is-success is-pulled-right" onClick={event => {
             event.preventDefault()
             checkHeadwear()
-            checkHead()
-            checkTorso()
-            checkLegs()
-            navigate()
         }}>
             Use These Parts
         </button>
