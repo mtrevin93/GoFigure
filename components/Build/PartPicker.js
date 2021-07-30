@@ -26,7 +26,7 @@ const myTorsos = parts.filter(part => part.userId
 const myLegs = parts.filter(part => part.userId 
     === parseInt(sessionStorage.getItem("GoFigure_user")) && part.typeId === 4)
 
-    const { minifigure, setMinifigure } = useContext(FigContext)
+    const { minifigure, setMinifigure, postFig } = useContext(FigContext)
 
     const [headwearCounter, setHeadwearCounter] = useState(0)
     const [headCounter, setHeadCounter] = useState(0)
@@ -252,8 +252,11 @@ const checkLegs = (newMinifigure) => {
     if(minifigure.legsId === 0){
         newMinifigure.legsId = myLegs[0].id
         setMinifigure(newMinifigure)
+        postFig(newMinifigure)
         navigate()}
-        else{navigate()}
+        else{
+            postFig(newMinifigure)
+            navigate()}
         }
 
 return(

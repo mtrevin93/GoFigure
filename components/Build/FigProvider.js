@@ -12,13 +12,34 @@ const [minifigure, setMinifigure] = useState({
     legsId: 0,
     title: "",
     description: "",
-    imgLink: ""
+    img: null
 
   });
 
+const postFig = fig => {
+return fetch("http://localhost:8088/savedFigs", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(fig)
+    })
+    .then(response => response.json())
+}
+
+const updateFig = fig => {
+    return fetch(`http://localhost:8088/savedFigs/${fig.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(fig)
+    })
+  }
+
     return (
         <FigContext.Provider value ={{
-            minifigure, setMinifigure
+            minifigure, setMinifigure, postFig, updateFig
         }}>
             {props.children}
         </FigContext.Provider>
