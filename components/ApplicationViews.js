@@ -2,9 +2,11 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { BrickProvider } from "./Search/BrickProvider"
 import { CollectionProvider } from "./Bricks/CollectionProvider"
+import { ProfileProvider } from "./Profile/ProfileProvider"
 import { MinifigSearchForm } from "./Search/MinifigSearchForm"
 import { SearchDetail } from "./Search/SearchDetail"
 import { BrickList } from "./Bricks/BrickList"
+import { ProfileList } from "./Profile/ProfileList"
 import { PartPicker } from "./Build/PartPicker"
 import { FigProvider } from "./Build/FigProvider"
 import { FigBuilder } from "./Build/FigBuilder"
@@ -30,12 +32,14 @@ export const ApplicationViews = () => {
             <Route path="/build">
                 <FigBuilder/>
             </Route>
+        
+        <ProfileProvider>
+            <Route path="/profile">
+               <ProfileList/> 
+            </Route>
+        </ProfileProvider>
         </CollectionProvider>
         </FigProvider>
-
-         <Route path="/collection">
-             
-         </Route>
 
         <CollectionProvider>
         <BrickProvider>

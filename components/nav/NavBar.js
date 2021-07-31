@@ -76,7 +76,7 @@ export const NavBar = (props) => {
           </Link>
           </a>
           <a class="navbar-item">
-            <Link to="/build">
+            <Link to="/profile">
             My Minifigs
             </Link>
           </a>
