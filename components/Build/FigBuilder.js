@@ -46,6 +46,7 @@ const uploadImage = () => {
     const handleClickSaveMinifigure = (event) => {
 
         const newMinifigure = {...minifigure}
+        newMinifigure.name = minifigure.name
         newMinifigure.userId = parseInt(sessionStorage.getItem("GoFigure_user"))
 
             if(minifigure.headwearId === 0 || minifigure.headId === 0 || 
@@ -57,6 +58,7 @@ const uploadImage = () => {
                 return
             }
             else{
+                newMinifigure.name = minifigure.name
                 postFig(newMinifigure)
                 const resetMinifigure = {
                 userId: 0,

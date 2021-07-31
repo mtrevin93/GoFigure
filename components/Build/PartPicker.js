@@ -254,14 +254,12 @@ const checkLegs = (newMinifigure) => {
         newMinifigure.name= ""
         newMinifigure.description= ""
         setMinifigure(newMinifigure)
-        // postFig(newMinifigure)
         navigate()}
         else{
             newMinifigure.legsId = myLegs[0].id
             newMinifigure.name= ""
             newMinifigure.description= ""
             setMinifigure(newMinifigure)
-            // postFig(newMinifigure)
             navigate()}
         }
 

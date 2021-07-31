@@ -29,7 +29,9 @@ return (
         <img class = "image is-128x128" src={parts.find(part => part.id === savedFig.legsId).img}/>
     </div>}
     <div class="column is-2 my-2 height">
+        Name
         <text class="textarea is-small my-1">{savedFig.name}</text>
+        Description
         <text class="textarea is-small my-1">{savedFig.description}</text>
         <button class="button is-danger is-small mt-2" onClick={event => {
             event.preventDefault()
