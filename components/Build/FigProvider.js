@@ -5,12 +5,13 @@ export const FigContext = createContext()
 export const FigProvider = (props) => {
 
 const [minifigure, setMinifigure] = useState({
+
     userId: 0,
     headwearId: 0,
     headId: 0,
     torsoId: 0,
     legsId: 0,
-    title: "",
+    name: "",
     description: "",
     img: null
 
