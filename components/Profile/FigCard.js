@@ -38,13 +38,13 @@ return (
         <text class="textarea is-small my-1">{savedFig.name}</text>
         Description
         <text class="textarea is-small my-1">{savedFig.description}</text>
-        {collectionFigs.find(fig => fig.figId === savedFig.id)? null :
+        {/* {collectionFigs.find(fig => fig.figId === savedFig.id)? null :
         <button class="button is-info" onClick={event => {
             event.preventDefault()
             handleClickChangeCollection()
         }}>
             Add to a Collection
-        </button>}
+        </button>} */}
         <button class="button is-danger is-small mt-2" onClick={event => {
             event.preventDefault()
             handleClickRemoveFig()

@@ -10,6 +10,7 @@ import { ProfileList } from "./Profile/ProfileList"
 import { PartPicker } from "./Build/PartPicker"
 import { FigProvider } from "./Build/FigProvider"
 import { FigBuilder } from "./Build/FigBuilder"
+import { CollectionForm } from "./Profile/CollectionForm"
 
 export const ApplicationViews = () => {
     return (
@@ -37,6 +38,10 @@ export const ApplicationViews = () => {
             <Route path="/profile">
                <ProfileList/> 
             </Route>
+            <Route path="/collection">
+                <CollectionForm/>
+            </Route>
+
         </ProfileProvider>
         </CollectionProvider>
         </FigProvider>

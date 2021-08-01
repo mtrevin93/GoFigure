@@ -6,7 +6,39 @@ export const ProfileProvider = (props) => {
 
   const [savedFigs, setSavedFigs] = useState([])
   const [ collections, setCollections ] = useState([])
-  const [collectionFigs, setCollectionFigs] = useState([])
+  const [collectionUsers, setCollectionUsers] = useState([])
+  const [users, setUsers] = useState([])
+
+  const [collection, setCollection] = useState({
+
+    name: "",
+    description: "",
+
+  });
+
+  const addCollectionUser = collectionUser => {
+    return fetch("http://localhost:8088/collectionUsers", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(collectionUser)
+        })
+        .then(response => response.json())
+    }
+  
+    const getUsers = () => {
+      return fetch(`http://localhost:8088/users`)
+      .then(res => res.json())
+      .then(setUsers)
+    }
+
+    const getCollectionUsers = () => {
+      return fetch(`http://localhost:8088/collectionUsers`)
+      .then(res => res.json())
+      .then(setCollectionUsers)
+    }
 
   const getSavedFigs = () => {
     return fetch(`http://localhost:8088/savedFigs`)
@@ -18,12 +50,6 @@ export const ProfileProvider = (props) => {
     return fetch(`http://localhost:8088/collections`)
     .then(res => res.json())
     .then(setCollections)
-  }
-
-  const getCollectionFigs = () => {
-    return fetch(`http://localhost:8088/collectionFigs`)
-    .then(res => res.json())
-    .then(setCollectionFigs)
   }
 
   const removePart = (savedFigId) => {
@@ -44,11 +70,12 @@ const addCollection = collection => {
       .then(response => response.json())
   }
 
-
     return (
         <ProfileContext.Provider value ={{
             savedFigs, getSavedFigs, collections, getCollections, 
-            collectionFigs, getCollectionFigs, removePart, addCollection
+            removePart, addCollection,
+            addCollectionUser, getCollectionUsers, collectionUsers, users,
+            getUsers, collection
         }}>
             {props.children}
         </ProfileContext.Provider>
