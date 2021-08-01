@@ -33,10 +33,22 @@ export const ProfileProvider = (props) => {
       .then(getSavedFigs)
 }
 
+const addCollection = collection => {
+  return fetch("http://localhost:8088/collections", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(collection)
+      })
+      .then(response => response.json())
+  }
+
+
     return (
         <ProfileContext.Provider value ={{
             savedFigs, getSavedFigs, collections, getCollections, 
-            collectionFigs, getCollectionFigs, removePart
+            collectionFigs, getCollectionFigs, removePart, addCollection
         }}>
             {props.children}
         </ProfileContext.Provider>
