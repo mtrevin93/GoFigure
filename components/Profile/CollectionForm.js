@@ -40,14 +40,14 @@ const [ userString, setUserString ] = useState("")
   }
 
 const handleClickCreateCollection = (event) => {
-    
+    debugger
     const newCollection = {...collection}
-
     if( newCollection.name="" || newCollection.description===""){
         window.alert("Your collection needs a name and description")
         return
     }
     else{
+        newCollection.name = collection.name
         addCollection(newCollection).then((res) => addUsers(res.id))
     }
 }
@@ -63,7 +63,7 @@ const handleClickCreateCollection = (event) => {
     const newUsers = newUserString.split(',')
     for (const newUser of newUsers){
         if (users.find(existingUser => existingUser.username.toLowerCase() === newUser.toLowerCase())){
-        const userObj = users.find(userObj => userObj.username === newUser)
+        const userObj = users.find(userObj => userObj.username.toLowerCase() === newUser.toLowerCase())
         const newCollectionUser = {userId: userObj.id, collectionId: collectionId}
         addCollectionUser(newCollectionUser)
         }
@@ -95,7 +95,7 @@ return(
         <label class="label">Give Your Collection a Description:</label>
         <fieldset>
             <div class="form-group">
-              <input class="input nameTextInput" type="text is-large"  id="description" required autoFocus class="form-control" placeholder="Description" value={collection.description} onChange={handleControlledInputChange} 
+              <input class="input descriptionTextInput" type="text is-large"  id="description" required autoFocus class="form-control" placeholder="Description" value={collection.description} onChange={handleControlledInputChange} 
               defaultValue=""/>
             </div>
         </fieldset>
