@@ -57,16 +57,6 @@ return (
         }}>
             Add Parts
         </button>
-        {/* Button-for detail page to add piece by specific part
-        <button class="button is-info my-6">
-            <Link
-            minifig={minifig}to={
-                `/search/detail/${minifig.set_num}`
-            }
-            >
-            <text class="is-white">Details</text>
-            </Link>
-        </button> */}
     </div>
     </>
 )

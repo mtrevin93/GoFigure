@@ -1,24 +1,28 @@
 import React, { useContext, useEffect } from "react"
 import { ProfileContext } from "./ProfileProvider"
 import { CollectionContext } from "../Bricks/CollectionProvider"
+import { FigContext } from "../Build/FigProvider"
 
 export const FigCard = ({ savedFig }) => {
 
-const { removePart } = useContext(ProfileContext)
+const { removeFig, collections, getCollections, 
+    addFigToCollection, removeFigFromCollection, } = useContext(ProfileContext)
 const { parts, getParts } = useContext(CollectionContext)
-const { savedFigs, collectionFigs } = useContext(ProfileContext)
+const { updateFig } = useContext(FigContext)
 
 useEffect(() => {
-getParts()
+getCollections()
   }, [])
 
-const handleClickRemoveFig = () => {
-removePart(savedFig.id)
+const handleControlledInputChange = (event) => {
+    const newFig = {...savedFig}
+    newFig.collectionId = parseInt(event.target.value)
+    updateFig(newFig)
 }
 
-const handleClickChangeCollection = () => {
-    removePart(savedFig.id)
-    }
+const handleClickRemoveFig = () => {
+    removeFigFromCollection(savedFig.id)
+}
 
 return (
     <>
@@ -38,13 +42,17 @@ return (
         <text class="textarea is-small my-1">{savedFig.name}</text>
         Description
         <text class="textarea is-small my-1">{savedFig.description}</text>
-        {/* {collectionFigs.find(fig => fig.figId === savedFig.id)? null :
-        <button class="button is-info" onClick={event => {
-            event.preventDefault()
-            handleClickChangeCollection()
-        }}>
-            Add to a Collection
-        </button>} */}
+        <div class="select">
+                        <select onChange={(event) => handleControlledInputChange(event)}>
+                            <option value="null">Change Collection</option>
+                             {collections.map(collection => {
+                                return <option name={collection.name} key={collection.id} value={collection.id}>
+                                {collection.name}
+                                </option>
+                            })}
+                            {savedFig.collectionId ===0? null : <option value="0">Remove From Collection</option>}
+                        </select>
+                    </div>
         <button class="button is-danger is-small mt-2" onClick={event => {
             event.preventDefault()
             handleClickRemoveFig()

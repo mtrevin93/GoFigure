@@ -40,7 +40,7 @@ const [ userString, setUserString ] = useState("")
   }
 
 const handleClickCreateCollection = (event) => {
-    debugger
+  
     const newCollection = {...collection}
     if( newCollection.name="" || newCollection.description===""){
         window.alert("Your collection needs a name and description")

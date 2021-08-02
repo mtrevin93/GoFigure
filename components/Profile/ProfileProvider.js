@@ -52,7 +52,7 @@ export const ProfileProvider = (props) => {
     .then(setCollections)
   }
 
-  const removePart = (savedFigId) => {
+  const removeFig = (savedFigId) => {
     return fetch(`http://localhost:8088/savedFigs/${savedFigId}`, {
       method: "DELETE"
     })
@@ -73,7 +73,7 @@ const addCollection = collection => {
     return (
         <ProfileContext.Provider value ={{
             savedFigs, getSavedFigs, collections, getCollections, 
-            removePart, addCollection,
+            removeFig, addCollection,
             addCollectionUser, getCollectionUsers, collectionUsers, users,
             getUsers, collection
         }}>
