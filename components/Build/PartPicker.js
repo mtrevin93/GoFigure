@@ -26,12 +26,13 @@ const myTorsos = parts.filter(part => part.userId
 const myLegs = parts.filter(part => part.userId 
     === parseInt(sessionStorage.getItem("GoFigure_user")) && part.typeId === 4)
 
-    const { minifigure, setMinifigure, postFig } = useContext(FigContext)
+    const { minifigure, setMinifigure } = useContext(FigContext)
 
     const [headwearCounter, setHeadwearCounter] = useState(0)
     const [headCounter, setHeadCounter] = useState(0)
     const [torsoCounter, setTorsoCounter] = useState(0)
     const [legsCounter, setLegsCounter] = useState(0)
+    const [ showPartDetails, setShowPartDetails ] = useState(false)
     
       const downHeadCounter = () => {
     
@@ -222,6 +223,16 @@ const navigate = () => {
     history.push("/build")
 }
 
+const mecabricksNavigate = () => {
+        const win = window.open("https://www.mecabricks.com/en/workshop/");
+        win.focus();
+}
+
+const setPartDetailsView = () => {
+    const view = showPartDetails
+    setShowPartDetails(!view)
+}
+
 const checkHead = (newMinifigure) => {
 if(minifigure.headId === 0){
     newMinifigure.headId = myHeads[0].id
@@ -269,9 +280,9 @@ return(
         Build a Minifigure
     </h2>
     <div class="columns is-multiline">
-        <div class="column is-4 my-2">
+        <div class="column is-2 my-2">
             <div class="rows">
-                <div class="headwear row m-3">
+                <div class="headwear row m-2 my-5">
                     <button class="button is-primary m-5" id="headwearId"  
                      onClick = {event => {
                         event.preventDefault()
@@ -280,7 +291,7 @@ return(
                         Previous
                     </button>
                 </div>
-                <div class="head row m-3">
+                <div class="head row m-2 my-5">
                     <button class="button is-primary m-5" id="headId" value={[headCounter]} 
                      onClick = {event => {
                         event.preventDefault()
@@ -289,7 +300,7 @@ return(
                         Previous
                     </button>
                 </div>
-                <div class="torso row m-3">
+                <div class="torso row m-2 my-5">
                     <button class="button is-primary m-5" id="torsoId" value={[torsoCounter]} 
                      onClick = {event => {
                         event.preventDefault()
@@ -298,7 +309,7 @@ return(
                         Previous
                     </button>
                 </div>
-                <div class="legs row m-3">
+                <div class="legs row m-2 my-5">
                     <button class="button is-primary m-5" id="legsId" value={[legsCounter]} 
                      onClick = {event => {
                         event.preventDefault()
@@ -309,7 +320,7 @@ return(
                 </div>
             </div>
         </div>
-        <div class="column is-4 my-2">
+        <div class="column is-2 my-2">
             <div class="rows">
                 <div class="headwear row m-3">
                     <figure class=" headwear image is-96x96">
@@ -345,9 +356,9 @@ return(
                 </div>
             </div>
         </div>
-        <div class="column is-4 my-2">
+        <div class="column is-2 my-2">
             <div class="rows">
-                <div class="headwear row m-3 my-3">
+                <div class="headwear row m-2 my-5">
                     <button class="button is-primary m-5" id="myHeadwear" value={[headwearCounter]} 
                      onClick = {event => {
                         event.preventDefault()
@@ -356,7 +367,7 @@ return(
                         Next
                     </button>
                 </div>
-                <div class="head row m-3 my-3">
+                <div class="head row m-2 my-5">
                 <button class="button is-primary m-5" id="myHeads" value={[headCounter]} 
                      onClick = {event => {
                         event.preventDefault()
@@ -365,7 +376,7 @@ return(
                         Next
                     </button>
                 </div>
-                <div class="torso row m-3 my-3">
+                <div class="torso row m-2 my-5">
                     <button class="button is-primary m-5" id="myTorsos" value={[torsoCounter]} 
                      onClick = {event => {
                         event.preventDefault()
@@ -374,7 +385,7 @@ return(
                         Next
                     </button>
                 </div>
-                <div class="legs row m-3 my-3">
+                <div class="legs row m-2 my-5">
                     <button class="button is-primary m-5" id="myLegs" value={[legsCounter]} 
                      onClick = {event => {
                         event.preventDefault()
@@ -385,14 +396,73 @@ return(
                 </div>
             </div>
         </div>
-    </div>
+    <div class="details column is-6">
+        {showPartDetails? null : <div class="">
+        <div class="rows">
+            <div class="row">
+        <div class="column is-3">
+            <figure class="image is-square">
+                <img src={myHeadwear[headwearCounter]? 
+                            myHeadwear[headwearCounter]?.img : myHeadwear[0]?.img}/>
+            </figure>
+            <text class="label is-small my-1">{myHeadwear[headwearCounter]? 
+                            myHeadwear[headwearCounter]?.name : myHeadwear[0]?.name}</text>
+                            <br/>
+                            <text class="label is-small m-1">LEGO ID:{myHeadwear[headwearCounter]? 
+                            myHeadwear[headwearCounter]?.legoId : myHeadwear[0]?.legoId}</text>
+        </div>
+        <div class="column is-3">
+            <figure class="image is-square">
+                <img src={myHeads[headCounter]? 
+                            myHeads[headCounter]?.img : myHeads[0]?.img}/>
+            </figure>
+            <text class="label is-small my-1">LEGO ID:{myHeads[headCounter]? 
+                            myHeads[headCounter]?.legoId : myHeads[0]?.legoId}</text>
+        </div>
+        </div>
+        <div class="row">
+        <div class="column is-3">
+            <figure class="image is-square">
+                <img src={myTorsos[torsoCounter]? 
+                            myTorsos[torsoCounter]?.img : myTorsos[0]?.img}/>
+            </figure>
+            <text class="label is-small my-1">LEGO ID:{myTorsos[torsoCounter]? 
+                            myTorsos[torsoCounter]?.legoId : myTorsos[0]?.legoId}</text>
+        </div>
+        <div class="column is-3">
+            <figure class="image is-square">
+                <img src={myLegs[legsCounter]? 
+                            myLegs[legsCounter]?.img : myLegs[0]?.img}/>
+            </figure>
+            <text class="label is-small my-1">LEGO ID:{myLegs[legsCounter]? 
+                            myLegs[legsCounter]?.legoId : myLegs[0]?.legoId}</text>
+        </div>
+        </div>
+        </div>
+    </div>}
+    </div>                    
+</div>
+       
+
     </section>
     <section class="section">
-        <button class="button is-success is-pulled-right" onClick={event => {
+        <button class="button is-success is-pulled-left m-5" onClick={event => {
             event.preventDefault()
             checkHeadwear()
         }}>
             Use These Parts
+        </button>
+        <button class="button is-info is-pulled-left m-5" onClick={event => {
+            event.preventDefault()
+            setPartDetailsView()
+        }}>
+            Show Part Details
+        </button>
+        <button class="button is-warning is-pulled-left m-5" href="https://www.mecabricks.com/en/workshop/" onClick={event => {
+            event.preventDefault()
+            mecabricksNavigate()
+        }}>
+            Mecabricks 3D Builder
         </button>
     </section>
 </>

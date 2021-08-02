@@ -20,7 +20,8 @@ const getFigParts = () => {
             "rebrickableId": piece.part.part_num,
             "typeId":types.find(type => piece.part.part_cat_id===type.rebrickableId).id,
             "img": piece.part.part_img_url,
-            "name": piece.part.name
+            "name": piece.part.name,
+            "legoId": piece.part.external_ids?.LEGO? piece.part.external_ids.LEGO[0] : null
         }
         if(parts.some(brick => brick.rebrickableId === piece.part.part_num && brick.userId === parseInt(sessionStorage.getItem("GoFigure_user")))){
             console.log("Part already in user inventory")
