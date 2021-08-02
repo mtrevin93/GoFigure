@@ -10,13 +10,18 @@ import { PartPicker } from "./Build/PartPicker"
 import { FigProvider } from "./Build/FigProvider"
 import { FigBuilder } from "./Build/FigBuilder"
 import { CollectionForm } from "./Profile/CollectionForm"
+import { PostList } from "./Profile/PostList"
 
 export const ApplicationViews = () => {
     return (
         <>
-         <Route exact path="/">
-
-         </Route>
+        <ProfileProvider>
+        <CollectionProvider>
+            <Route exact path="/">
+                <PostList/>
+            </Route>
+        </CollectionProvider>
+        </ProfileProvider>
 
         <CollectionProvider>
             <Route path="/bricks">

@@ -41,7 +41,7 @@ export const ProfileProvider = (props) => {
     }
 
   const getSavedFigs = () => {
-    return fetch(`http://localhost:8088/savedFigs`)
+    return fetch(`http://localhost:8088/savedFigs?_expand=collection&_expand=user`)
     .then(res => res.json())
     .then(setSavedFigs)
   }
