@@ -13,7 +13,8 @@ return (
     <>
     <section class="section header">
         <div class="title">
-            {savedFig?.collectionId === 0? `Check out "${savedFig?.name}" Added by ${savedFig?.user.name}`:
+            {savedFig?.collectionId === 0? `Check out ${savedFig?.user.name}'s 
+             "${savedFig?.name}" Minifigure`:
             `${savedFig?.user?.name} added "${savedFig?.name}" to "${savedFig?.collection?.name}"`}
         </div>
     </section>

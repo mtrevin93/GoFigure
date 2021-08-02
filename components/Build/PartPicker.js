@@ -256,7 +256,6 @@ const checkLegs = (newMinifigure) => {
         setMinifigure(newMinifigure)
         navigate()}
         else{
-            newMinifigure.legsId = myLegs[0].id
             newMinifigure.name= ""
             newMinifigure.description= ""
             setMinifigure(newMinifigure)
