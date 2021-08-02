@@ -18,13 +18,13 @@ const myHeads = parts.filter(part => part.userId
     === parseInt(sessionStorage.getItem("GoFigure_user")) && part.typeId === 2)
     
 const myHeadwear = parts.filter(part => part.userId 
-    === parseInt(sessionStorage.getItem("GoFigure_user")) && part.typeId === 1)
+    === parseInt(sessionStorage.getItem("GoFigure_user")) && part.typeId=== 1)
 
 const myTorsos = parts.filter(part => part.userId 
-    === parseInt(sessionStorage.getItem("GoFigure_user")) && part.typeId === 3)
+    === parseInt(sessionStorage.getItem("GoFigure_user")) && part.typeId=== 3)
 
 const myLegs = parts.filter(part => part.userId 
-    === parseInt(sessionStorage.getItem("GoFigure_user")) && part.typeId === 4)
+    === parseInt(sessionStorage.getItem("GoFigure_user")) && part.typeId=== 4)
 
     const { minifigure, setMinifigure } = useContext(FigContext)
 

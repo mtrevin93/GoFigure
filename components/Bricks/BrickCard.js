@@ -6,7 +6,7 @@ export const BrickCard = ({ part }) => {
 const { removePart } = useContext(CollectionContext)
 
 const handleClickRemoveBrick = () => {
-removePart(part.id)
+    removePart(part.id)
 }
 
 return (

@@ -22,7 +22,8 @@ return(
         GoFigure Buzz
         </h2>
     </div>
-    <div class="">
+
+    <div class="columns is-multiline">
         {sortedFigs.map(savedFig => {
         return <Post key={savedFig.id} savedFig={savedFig}/>})}
     </div>

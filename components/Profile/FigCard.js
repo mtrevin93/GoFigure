@@ -12,7 +12,7 @@ const { updateFig } = useContext(FigContext)
 
 useEffect(() => {
 getCollections()
-  }, [])
+  }, [savedFig])
 
 const handleControlledInputChange = (event) => {
     const newFig = {...savedFig}
@@ -21,7 +21,7 @@ const handleControlledInputChange = (event) => {
 }
 
 const handleClickRemoveFig = () => {
-    removeFigFromCollection(savedFig.id)
+    removeFig(savedFig.id)
 }
 
 return (

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react"
 import { BrickContext } from "./BrickProvider"
 import { SearchList } from "./SearchList"
+import "./MinifigSearchForm.css"
 
 export const MinifigSearchForm = () => {
 
@@ -45,6 +46,29 @@ export const MinifigSearchForm = () => {
 
     return (
         <>
+        <div class="header rows">
+            <div class="row">
+            <div class="title m-6">
+                Search for Parts By Minifigure
+            </div>
+            </div>
+            <div class="row m-6">
+                <div className="wrg-toggle">
+                <div className="wrg-toggle-container">
+                <div className="wrg-toggle-check">
+                    {/* <span>🌜</span> */}
+                </div>
+                <div className="wrg-toggle-uncheck">
+                    {/* <span>🌞</span> */}
+                </div>
+                </div>
+                <div className="wrg-toggle-circle"></div>
+                <input className="wrg-toggle-input" type="checkbox" aria-label="Toggle Button" />
+            </div>
+        </div>
+
+        </div>
+
         <div class="columns is-multiline">
 
             <div class="field column is-one-half ml-6 mt-6">
