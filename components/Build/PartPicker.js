@@ -396,7 +396,10 @@ return(
                 </div>
             </div>
         </div>
-    <div class="details column is-6">
+    <div class="column is-1">
+
+    </div>
+    <div class="details column is-5">
         {showPartDetails? null : <div class="">
         <div class="rows">
             <div class="row">
@@ -408,26 +411,33 @@ return(
             <text class="label is-small my-1">{myHeadwear[headwearCounter]? 
                             myHeadwear[headwearCounter]?.name : myHeadwear[0]?.name}</text>
                             <br/>
-                            <text class="label is-small m-1">LEGO ID:{myHeadwear[headwearCounter]? 
-                            myHeadwear[headwearCounter]?.legoId : myHeadwear[0]?.legoId}</text>
+                            <text class="label is-small m-1">LEGO ID: {myHeadwear[headwearCounter]?.legoId? 
+                            myHeadwear[headwearCounter]?.legoId : "NOT AVAILABLE"}</text>
         </div>
         <div class="column is-3">
             <figure class="image is-square">
                 <img src={myHeads[headCounter]? 
                             myHeads[headCounter]?.img : myHeads[0]?.img}/>
             </figure>
-            <text class="label is-small my-1">LEGO ID:{myHeads[headCounter]? 
-                            myHeads[headCounter]?.legoId : myHeads[0]?.legoId}</text>
+            <text class="label is-small my-1">{myHeads[headCounter]? 
+                            myHeads[headCounter]?.name : myHeads[0]?.name}</text>
+                            <br/>
+                            <text class="label is-small m-1">LEGO ID: {myHeads[headCounter]?.legoId? 
+                            myHeads[headCounter]?.legoId : "NOT AVAILABLE"}</text>
         </div>
         </div>
+        <div class="column is-2"/>
         <div class="row">
         <div class="column is-3">
             <figure class="image is-square">
                 <img src={myTorsos[torsoCounter]? 
                             myTorsos[torsoCounter]?.img : myTorsos[0]?.img}/>
             </figure>
-            <text class="label is-small my-1">LEGO ID:{myTorsos[torsoCounter]? 
-                            myTorsos[torsoCounter]?.legoId : myTorsos[0]?.legoId}</text>
+            <text class="label is-small my-1">LEGO ID: {myTorsos[torsoCounter]? 
+                            myTorsos[torsoCounter]?.name : myTorsos[0]?.name}</text>
+                            <br/>
+                            <text class="label is-small m-1">LEGO ID: {myTorsos[torsoCounter]?.legoId? 
+                            myTorsos[torsoCounter]?.legoId : "NOT AVAILABLE"}</text>
         </div>
         <div class="column is-3">
             <figure class="image is-square">
@@ -435,7 +445,10 @@ return(
                             myLegs[legsCounter]?.img : myLegs[0]?.img}/>
             </figure>
             <text class="label is-small my-1">LEGO ID:{myLegs[legsCounter]? 
-                            myLegs[legsCounter]?.legoId : myLegs[0]?.legoId}</text>
+                            myLegs[legsCounter]?.name : myLegs[0]?.name}</text>
+                            <br/>
+                            <text class="label is-small m-1">LEGO ID: {myLegs[legsCounter]?.legoId? 
+                            myLegs[legsCounter]?.legoId : "NOT AVAILABLE"}</text>
         </div>
         </div>
         </div>
@@ -446,11 +459,11 @@ return(
 
     </section>
     <section class="section">
-        <button class="button is-success is-pulled-left m-5" onClick={event => {
+        <button class="button is-warning is-pulled-left m-5" href="https://www.mecabricks.com/en/workshop/" onClick={event => {
             event.preventDefault()
-            checkHeadwear()
+            mecabricksNavigate()
         }}>
-            Use These Parts
+            Mecabricks 3D Builder
         </button>
         <button class="button is-info is-pulled-left m-5" onClick={event => {
             event.preventDefault()
@@ -458,11 +471,11 @@ return(
         }}>
             Show Part Details
         </button>
-        <button class="button is-warning is-pulled-left m-5" href="https://www.mecabricks.com/en/workshop/" onClick={event => {
+        <button class="button is-success is-pulled-left m-5" onClick={event => {
             event.preventDefault()
-            mecabricksNavigate()
+            checkHeadwear()
         }}>
-            Mecabricks 3D Builder
+            Use These Parts
         </button>
     </section>
 </>
