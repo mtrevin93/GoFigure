@@ -17,7 +17,7 @@ useEffect(() => {
             </h2>
         <div class="columns is-multiline">
             {parts.map(part => {
-                if(part.userId === parseInt(sessionStorage.getItem("GoFigure_user"))){
+                if(part.userId === parseInt(sessionStorage.getItem("GoFigure_user")) && part.isAvailable === true){
                 return <BrickCard key={part.id} part={part}/>}})}
         </div>
     </section>
