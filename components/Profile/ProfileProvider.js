@@ -16,28 +16,10 @@ export const ProfileProvider = (props) => {
 
   });
 
-  const addCollectionUser = collectionUser => {
-    return fetch("http://localhost:8088/collectionUsers", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(collectionUser)
-        })
-        .then(response => response.json())
-    }
-  
     const getUsers = () => {
       return fetch(`http://localhost:8088/users`)
       .then(res => res.json())
       .then(setUsers)
-    }
-
-    const getCollectionUsers = () => {
-      return fetch(`http://localhost:8088/collectionUsers`)
-      .then(res => res.json())
-      .then(setCollectionUsers)
     }
 
   const getSavedFigs = () => {
@@ -74,8 +56,7 @@ const addCollection = collection => {
         <ProfileContext.Provider value ={{
             savedFigs, getSavedFigs, collections, getCollections, 
             removeFig, addCollection,
-            addCollectionUser, getCollectionUsers, collectionUsers, users,
-            getUsers, collection
+            users, getUsers, collection
         }}>
             {props.children}
         </ProfileContext.Provider>

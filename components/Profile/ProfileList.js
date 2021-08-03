@@ -38,8 +38,7 @@ const handleClickShowCollectionForm = () => {
         
 
     {collections.map(collection => {
-            if(collectionUsers.find(collectionUser => collectionUser.userId === parseInt(sessionStorage.getItem("GoFigure_user"))
-            && collection.id === collectionUser.collectionId))
+            if(collection.userId === parseInt(sessionStorage.getItem("GoFigure_user")))
             {
             return <CollectionCard key={collection.id} collection={collection} collectionUsers={collectionUsers}/>}})}
 

@@ -4,17 +4,13 @@ import { useHistory } from "react-router-dom"
 
 export const CollectionForm = () => {
 
-const { addCollectionUser, users, addCollection, getUsers } = useContext(ProfileContext)
+const { addCollection } = useContext(ProfileContext)
 const [collection, setCollection] = useState({
 
     name: "",
     description: "",
 
   });
-
-  useEffect(() => {
-    getUsers()
-}, [])
 
 const history = useHistory()
 const [ userString, setUserString ] = useState("")
@@ -31,14 +27,6 @@ const [ userString, setUserString ] = useState("")
       setCollection(newCollection)
   }
 
-  const handleUserString = (event) => {
-
-    let newUserString = userString
-    newUserString = event.target.value
-    setUserString(newUserString)
-
-  }
-
 const handleClickCreateCollection = (event) => {
   
     const newCollection = {...collection}
@@ -48,34 +36,18 @@ const handleClickCreateCollection = (event) => {
     }
     else{
         newCollection.name = collection.name
-        addCollection(newCollection).then((res) => addUsers(res.id))
+        newCollection.userId = parseInt(sessionStorage.getItem("GoFigure_user"))
+        addCollection(newCollection)
     }
-}
 
-    const addUsers = (collectionId) => {
-
-    const thisUser = parseInt(sessionStorage.getItem("GoFigure_user"))
-    const thisCollectionUser = {userId: thisUser, collectionId: collectionId}
-    addCollectionUser(thisCollectionUser)
-
-    const newUserString = userString
-
-    const newUsers = newUserString.split(',')
-    for (const newUser of newUsers){
-        if (users.find(existingUser => existingUser.username.toLowerCase() === newUser.toLowerCase())){
-        const userObj = users.find(userObj => userObj.username.toLowerCase() === newUser.toLowerCase())
-        const newCollectionUser = {userId: userObj.id, collectionId: collectionId}
-        addCollectionUser(newCollectionUser)
-        }
+    const resetCollection = {
+        name: "",
+        description: "",
     }
-        const resetCollection = {
-            name: "",
-            description: "",
-        }
-        setCollection(resetCollection)
-        history.push("/profile")
-}
-
+    setCollection(resetCollection)
+    history.push("/profile")
+    }
+    
 return(
 <section class="section">
     <h2 class="title">
@@ -96,15 +68,6 @@ return(
         <fieldset>
             <div class="form-group">
               <input class="input descriptionTextInput" type="text is-large"  id="description" required autoFocus class="form-control" placeholder="Description" value={collection.description} onChange={handleControlledInputChange} 
-              defaultValue=""/>
-            </div>
-        </fieldset>
-    </div>
-    <div class="field">
-        <label class="label">Add Additional Users</label>
-        <fieldset>
-            <div class="form-group">
-              <input class="input nameTextInput" type="text is-large"  id="description" required autoFocus class="form-control" placeholder="Users" value={userString} onChange={handleUserString} 
               defaultValue=""/>
             </div>
         </fieldset>
