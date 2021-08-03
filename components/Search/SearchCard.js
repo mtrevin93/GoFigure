@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { BrickContext } from "./BrickProvider"
 import { CollectionContext } from "../Bricks/CollectionProvider"
-import { Link } from "react-router-dom"
 
 export const SearchCard = ({ minifig, types }) => {
 
@@ -24,7 +23,7 @@ const getFigParts = () => {
             "legoId": piece.part.external_ids?.LEGO? piece.part.external_ids.LEGO[0] : null,
             "isAvailable": true
         }
-        if(parts.some(brick => brick.rebrickableId === piece.part.part_num && brick.userId === parseInt(sessionStorage.getItem("GoFigure_user")))){
+        if(parts.some(brick => brick.rebrickableId === piece.part.part_num && brick.isAvailable && brick.userId === parseInt(sessionStorage.getItem("GoFigure_user")))){
             console.log("Part already in user inventory")
         }
         else{

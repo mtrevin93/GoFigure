@@ -21,6 +21,7 @@ export const BrickProvider = (props) => {
         return fetch(`https://rebrickable.com/api/v3/lego/minifigs/?key=67defb55cb3d7d95d714dbb8be7e2fe9&page=${page}&page_size=20&in_theme_id=${themeId}`)
         .then(res => res.json())
         .then((figs) => setFigSearch(figs.results))
+        debugger
     }
 
     const getMinifigsBySearch = ([terms],page) => {

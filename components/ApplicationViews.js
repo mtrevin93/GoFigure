@@ -50,6 +50,7 @@ export const ApplicationViews = () => {
         </CollectionProvider>
         </FigProvider>
 
+        <ProfileProvider>
         <CollectionProvider>
         <BrickProvider>
             <Route exact path="/search">
@@ -57,6 +58,7 @@ export const ApplicationViews = () => {
             </Route>
         </BrickProvider>
         </CollectionProvider>
+        </ProfileProvider>
         </>
     )
 }
