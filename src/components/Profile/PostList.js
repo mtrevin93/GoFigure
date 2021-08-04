@@ -17,17 +17,14 @@ export const PostList = () => {
    const posts = sortedFigs.filter(fig => fig.collectionId)  
 
 return(
-<section class="section">
-    <div class="m-2">
-        <h2 class="title">
-        GoFigure Buzz
-        </h2>
+<div class="">
+    <div class="">
     </div>
 
-    <div class="columns is-multiline">
+    <div class="">
         {posts.map(savedFig => {
         return <Post key={savedFig.id} savedFig={savedFig}/>})}
     </div>
-</section>
+</div>
 
 )}
