@@ -1,0 +1,20 @@
+.nameTextInput{
+    width: 10em;
+    height: 4em;
+    margin: auto;
+    position: relative;
+}
+.descriptionTextInput{
+    width: 30em;
+    height: 4em;
+    margin: auto;
+    position: relative;  
+}
+.row{
+    display:flex;
+    flex:flex-wrap;
+}
+.field{
+    margin-left:10em;
+    margin-right:10em;
+}

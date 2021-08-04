@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { BrickContext } from "./BrickProvider"
 import { CollectionContext } from "../Bricks/CollectionProvider"
-import { Link } from "react-router-dom"
 
 export const SearchCard = ({ minifig, types }) => {
 
@@ -20,9 +19,11 @@ const getFigParts = () => {
             "rebrickableId": piece.part.part_num,
             "typeId":types.find(type => piece.part.part_cat_id===type.rebrickableId).id,
             "img": piece.part.part_img_url,
-            "name": piece.part.name
+            "name": piece.part.name,
+            "bricklinkId": piece.part.external_ids?.BrickLink? piece.part.external_ids.BrickLink[0] : null,
+            "isAvailable": true
         }
-        if(parts.some(brick => brick.rebrickableId === piece.part.part_num && brick.userId === parseInt(sessionStorage.getItem("GoFigure_user")))){
+        if(parts.some(brick => brick.rebrickableId === piece.part.part_num && brick.isAvailable && brick.userId === parseInt(sessionStorage.getItem("GoFigure_user")))){
             console.log("Part already in user inventory")
         }
         else{
@@ -57,16 +58,6 @@ return (
         }}>
             Add Parts
         </button>
-        {/* Button-for detail page to add piece by specific part
-        <button class="button is-info my-6">
-            <Link
-            minifig={minifig}to={
-                `/search/detail/${minifig.set_num}`
-            }
-            >
-            <text class="is-white">Details</text>
-            </Link>
-        </button> */}
     </div>
     </>
 )

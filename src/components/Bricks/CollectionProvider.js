@@ -26,9 +26,21 @@ export const CollectionProvider = (props) => {
           .then(getParts)
     }
 
+    const updatePart = part => {
+
+        return fetch(`http://localhost:8088/parts/${part.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(part)
+        })
+          .then(getParts)
+      }
+
     return (
         <CollectionContext.Provider value ={{
-            getTypes, getParts, types, parts, removePart
+            getTypes, getParts, types, parts, updatePart
         }}>
             {props.children}
         </CollectionContext.Provider>

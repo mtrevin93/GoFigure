@@ -3,10 +3,12 @@ import { CollectionContext } from "./CollectionProvider"
 
 export const BrickCard = ({ part }) => {
 
-const { removePart } = useContext(CollectionContext)
+const { updatePart } = useContext(CollectionContext)
 
 const handleClickRemoveBrick = () => {
-removePart(part.id)
+    const newPart = {...part}
+    newPart.isAvailable = false
+    updatePart(newPart)
 }
 
 return (
@@ -16,7 +18,7 @@ return (
             <img src={part.img}/>
         </figure>
         <text class="textarea is-small my-1">{part.name}</text>
-        <button class="button is-danger is-small mt-6" onClick={event => {
+        <button class="button is-danger is-small mt-2" onClick={event => {
             event.preventDefault()
             handleClickRemoveBrick()
         }}>

@@ -1,19 +1,28 @@
 import React, { useState, useContext, useEffect } from "react"
 import { BrickContext } from "./BrickProvider"
 import { SearchList } from "./SearchList"
+import "./MinifigSearchForm.css"
+import { ProfileContext } from "../Profile/ProfileProvider"
 
 export const MinifigSearchForm = () => {
 
-    const { themes, getFigNum, searchTerms, setSearchTerms, getThemes, getMinifigsByTheme, figSearch, setFigSearch } = useContext(BrickContext)
-
+    const { themes, searchTerms, setSearchTerms, getThemes, getMinifigsByTheme, figSearch, setFigSearch } = useContext(BrickContext)
+    const { collections, users, getCollections, getUsers, savedFigs, getSavedFigs } = useContext(ProfileContext)
     const [ filteredThemes, setFilteredThemes ] = useState([])
 
     const [theme, setTheme] = useState({
         id: 0
     })
+    const [collection, setCollection] = useState({
+        id:null
+    })
+    const [ collectionSearch, setCollectionSearch ] = useState([])
 
     useEffect(() => {
         getThemes()
+        .then(getUsers)
+        .then(getCollections)
+        .then(getSavedFigs)
     }, [])
 
     useEffect(() => {
@@ -30,21 +39,68 @@ export const MinifigSearchForm = () => {
     const handleControlledInputChange = (event) => {
         /* When changing a state object or array,
         always create a copy, make changes, and then set state.*/
-        let selectedTheme = {...theme}
-        /* Theme is an object with properties.
-        Set the property to the new value
-        using object bracket notation. */
-        selectedTheme.id = parseInt(event.target.value)
-        // update state
-        setTheme(selectedTheme)
+        console.log(event.target.value)
+        const id = parseInt(event.target.value)
+        const specificEvent = event.target[id]
+        if (specificEvent?.label?.includes("'")){
+            const newCollection = {...collection}
+            newCollection.id = id
+            setCollection(newCollection)
+        }
+        else {
+            const newTheme = {...theme}
+            newTheme.id = id
+            setTheme(newTheme)
     }
+}
 
     const handleClickFindMinifigures = () => {
-        getMinifigsByTheme(theme.id, 1)
+        
+        if(collection.id !== null){
+            const searchFound = collections.find(resource=>resource.id === collection.id)
+            setFigSearch([])
+            setCollectionSearch(searchFound)
+        }
+        else{
+        setCollectionSearch([])
+        {getMinifigsByTheme(theme.id, 1)}
+        }
+
+    const resetCollection = {
+        id:null
     }
+    const resetTheme = {
+        id:0
+    }
+    setCollection(resetCollection)
+    setTheme(resetTheme)
+}   
 
     return (
         <>
+        <div class="header rows">
+            <div class="row">
+            <div class="title m-6">
+                Search for Parts By Minifigure
+            </div>
+            </div>
+            <div class="row m-6">
+                <div className="wrg-toggle">
+                <div className="wrg-toggle-container">
+                <div className="wrg-toggle-check">
+                    {/* <span>🌜</span> */}
+                </div>
+                <div className="wrg-toggle-uncheck">
+                    {/* <span>🌞</span> */}
+                </div>
+                </div>
+                <div className="wrg-toggle-circle"></div>
+                <input className="wrg-toggle-input" type="checkbox" aria-label="Toggle Button" />
+            </div>
+        </div>
+
+        </div>
+
         <div class="columns is-multiline">
 
             <div class="field column is-one-half ml-6 mt-6">
@@ -57,12 +113,17 @@ export const MinifigSearchForm = () => {
 
             <div class="field column is-one-eigth ml-3 mr-3 mt-6">
                 <label class="label">Theme</label>
-                <div class="control">
-                    <div class="select">
+                    <div class="control">
+                        <div class="select">
                         <select onChange={handleControlledInputChange}>
                             <option value="0">Select a Theme</option>
+                            {collections.map(collection => {
+                                return <option name="collection" key={collection.id} value={collection.id}>
+                                {users.find(user => user.id === collection.userId).name}'s "{collection.name}"
+                                </option>
+                            })}
                              {filteredThemes.map(theme => {
-                                return <option name={theme.name} key={theme.id} value={theme.id}>
+                                return <option name="theme" key={theme.id} value={theme.id}>
                                 {theme.name}
                                 </option>
                             })}
@@ -80,7 +141,7 @@ export const MinifigSearchForm = () => {
                 </button>
             </div>
         </div>
-            <SearchList minifigs={figSearch}/>
+            <SearchList collection={collectionSearch} minifigs={figSearch} savedFigs={savedFigs}/>
     </>
 )
 }
