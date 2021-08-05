@@ -7,6 +7,7 @@ export const BrickProvider = (props) => {
 
     const [ searchTerms, setSearchTerms ] = useState("")
     const [ figSearch, setFigSearch ] = useState([])
+    const [ partSearch, setPartSearch ] = useState([])
     const [ themes, setThemes ] = useState([])
     const [ figNum, setFigNum ] = useState([])
 
@@ -32,12 +33,19 @@ export const BrickProvider = (props) => {
     const getFigNum = (setNum) => {
         return fetch(`https://rebrickable.com/api/v3/lego/minifigs/${setNum}/parts/?key=67defb55cb3d7d95d714dbb8be7e2fe9`)
         .then(res => res.json())
-        // .then(setFigNum)
     }
+
+    const getPartsBySearch = (categoryId, term) => {
+        return fetch(`https://rebrickable.com/api/v3/lego/parts/?key=67defb55cb3d7d95d714dbb8be7e2fe9&part_cat_id=${categoryId}&search=${term}`)
+        .then(res => res.json())
+        .then((parts) => setPartSearch(parts.results))
+    }
+    
 
     return (
         <BrickContext.Provider value={{
-            themes, getThemes, getMinifigsByTheme, getMinifigsBySearch, getFigNum, searchTerms, setSearchTerms, figSearch, setFigSearch, setFigNum, figNum
+            themes, getThemes, getMinifigsByTheme, getMinifigsBySearch, getFigNum, searchTerms, setSearchTerms, figSearch, setFigSearch, setFigNum, figNum,
+            partSearch, setPartSearch, getPartsBySearch
         }}>
             {props.children}
         </BrickContext.Provider>

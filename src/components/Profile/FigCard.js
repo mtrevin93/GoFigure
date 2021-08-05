@@ -26,7 +26,6 @@ const handleControlledInputChange = (event) => {
         "collectionId": parseInt(event.target.value),
         "id": savedFig.id,
       }
-
     updateFig(newFig)
 }
 

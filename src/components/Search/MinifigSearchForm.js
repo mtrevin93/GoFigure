@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 import { BrickContext } from "./BrickProvider"
 import { SearchList } from "./SearchList"
 import "./MinifigSearchForm.css"
@@ -9,6 +10,8 @@ export const MinifigSearchForm = () => {
     const { themes, searchTerms, setSearchTerms, getThemes, getMinifigsByTheme, figSearch, setFigSearch } = useContext(BrickContext)
     const { collections, users, getCollections, getUsers, savedFigs, getSavedFigs } = useContext(ProfileContext)
     const [ filteredThemes, setFilteredThemes ] = useState([])
+
+    const history = useHistory()
 
     const [theme, setTheme] = useState({
         id: 0
@@ -76,6 +79,10 @@ export const MinifigSearchForm = () => {
     setTheme(resetTheme)
 }   
 
+const handleClickNavigate = () => {
+    history.push("/search/part")
+}
+
     return (
         <>
         
@@ -130,7 +137,14 @@ export const MinifigSearchForm = () => {
                 </button>
             </div>
         </div>
+        <button class="button is-info is-warning is-rounded m-6" onClick={event => {
+                    event.preventDefault()
+                    handleClickNavigate()
+                }}>
+                    Search By Part
+        </button>
             <SearchList collection={collectionSearch} minifigs={figSearch} savedFigs={savedFigs}/>
     </>
+    
 )
 }

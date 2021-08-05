@@ -11,6 +11,7 @@ import { FigProvider } from "./Build/FigProvider"
 import { FigBuilder } from "./Build/FigBuilder"
 import { CollectionForm } from "./Profile/CollectionForm"
 import { PostList } from "./Profile/PostList"
+import {  PartSearchForm } from "./Search/PartSearchForm"
 
 export const ApplicationViews = () => {
     return (
@@ -55,6 +56,9 @@ export const ApplicationViews = () => {
         <BrickProvider>
             <Route exact path="/search">
                 <MinifigSearchForm/>
+            </Route>
+            <Route exact path="/search/part">
+                <PartSearchForm/>
             </Route>
         </BrickProvider>
         </CollectionProvider>
