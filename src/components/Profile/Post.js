@@ -16,33 +16,34 @@ const relatedCollection = collections.find(collection => collection.id === saved
 
 return (
     <>
-<section class="section">
-    <section class="hero is-link is-small">
+<section class="div">
+    <section class="hero is-link is-small m-3 my-5">
   <div class="hero-body">
     <p class="title">
     {savedFig?.user.username} added 
              "{savedFig?.name}" to {relatedCollection?.name}
     </p>
     <p class="subtitle m-1">
-      This figure is {savedFig.description}
+      {savedFig.description}
     </p>
   </div>
 </section>
 </section>
 
-    <div class="columns">
-        
+    <div class="columns is-multiline">
+    
     {savedFig.img? 
     <div class="column is-2">
         <img class = "image is-3by-4 m-6" src={savedFig.img}/>
     </div>
     : 
-    <div class="column is-3 ml-6">
+    <div class="column is-2 ml-6">
         <img class = "image is-96x96" src={parts.find(part => part.id === savedFig.headwearId)?.img}/>
         <img class = "image is-96x96" src={parts.find(part => part.id === savedFig.headId)?.img}/>
         <img class = "image is-128x128" src={parts.find(part => part.id === savedFig.torsoId)?.img}/>
         <img class = "image is-128x128" src={parts.find(part => part.id === savedFig.legsId)?.img}/>
     </div>}
+    <div class="column is-1"></div>
     <div class="column is-3">
         <figure class="image is-128x128">
             <img src={parts.find(part => part.id === savedFig.headwearId)?.img}/>

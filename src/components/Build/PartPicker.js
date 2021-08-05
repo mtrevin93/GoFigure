@@ -451,7 +451,7 @@ return(
             <text class="label is-small my-1">Bricklink ID:{myLegs[legsCounter]? 
                             myLegs[legsCounter]?.name : myLegs[0]?.name}</text>
                             <br/>
-                            <text class="label is-small m-1">Bricklink ID: {myLegs[legsCounter]?.bricklinkId? 
+                            <text class="label is-small m-1" >Bricklink ID: {myLegs[legsCounter]?.bricklinkId? 
                             myLegs[legsCounter]?.bricklinkId : "NOT AVAILABLE"}</text>
         </div>
         </div>
