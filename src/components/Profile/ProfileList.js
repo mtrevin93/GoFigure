@@ -48,7 +48,7 @@ const handleClickShowCollectionForm = () => {
     {collections.map(collection => {
         if(collection.userId === parseInt(sessionStorage.getItem("GoFigure_user")))
         {
-            return <CollectionCard key={collection.id} collection={collection} collectionUsers={collectionUsers}/>}})}
+            return <CollectionCard showCollectionForm={showCollectionForm} key={collection.id} collection={collection} collectionUsers={collectionUsers}/>}})}
 
 
     <button class="button is-pulled-left is-primary"onClick={event => {

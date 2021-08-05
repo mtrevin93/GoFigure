@@ -3,7 +3,7 @@ import { Post } from "./Post"
 import { ProfileContext } from "./ProfileProvider"
 
 export const PostList = () => {
-    
+
     const { savedFigs, getSavedFigs } = useContext(ProfileContext)
     
     useEffect(() => {

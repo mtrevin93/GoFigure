@@ -3,9 +3,9 @@ import { ProfileContext } from "./ProfileProvider"
 import { CollectionContext } from "../Bricks/CollectionProvider"
 import { FigCard } from "./FigCard"
 
-export const CollectionCard = ({ collection, collectionFigs }) => {
+export const CollectionCard = ({ collection, collectionFigs, showCollectionForm }) => {
 
-const { removePart, savedFigs, getSavedFigs, getCollectionFigs  } = useContext(ProfileContext)
+const { removePart, savedFigs, getSavedFigs, getCollectionFigs, deleteCollection  } = useContext(ProfileContext)
 const { parts, getParts, collections } = useContext(CollectionContext)
 
 useEffect(() => {
@@ -17,8 +17,11 @@ const handleClickRemoveFig = (savedFig) => {
 removePart(savedFig.id)
 }
 
-const filteredFigs = savedFigs.filter(savedFig=> savedFig?.collectionId === collection.id)
+const handleClickDeleteCollection = () => {
+deleteCollection(collection.id)
+}
 
+const filteredFigs = savedFigs.filter(savedFig=> savedFig?.collectionId === collection.id)
 return (
     <>
             <section class="section">
@@ -31,6 +34,8 @@ return (
            </p>
            <p class="subtitle m-1">
       {collection.description}
+      {showCollectionForm === true? <button class="button is-danger mr-6 ml-6"onClick ={handleClickDeleteCollection}>
+        Delete</button> :null}
     </p>
          </div>
        </section>

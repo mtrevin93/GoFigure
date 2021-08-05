@@ -64,21 +64,21 @@ return (
             </div>
 
             <div class="field column is-one-eigth ml-3 mr-3 mt-6">    
-                        Select a Part Type
+                        <div class="subtitle">Select a Part Type</div>
                             <fieldset>
-                                <label class="headwear__label">Headwear</label>
+                                <label class="headwear__label my-1">Headwear</label>
                                 <input type="checkbox" name="headwear" id="59" onChange={(event)=> handleControlledInputChange(event)}/>
                             </fieldset>
                             <fieldset>
-                                <label class="headwear__label">Head</label>
+                                <label class="headwear__label my-1">Head</label>
                                 <input type="checkbox" name="head" id="60" onChange={(event)=> handleControlledInputChange(event)}/>
                             </fieldset>
                             <fieldset>
-                                <label class="headwear__label">Torso</label>
+                                <label class="headwear__label my-1">Torso</label>
                                 <input type="checkbox" name="torso" id="61" onChange={(event)=> handleControlledInputChange(event)}/>
                             </fieldset>
                             <fieldset>
-                                <label class="headwear__label">Legs</label>
+                                <label class="headwear__label my-1">Legs</label>
                                 <input type="checkbox" name="legs" id="65" onChange={(event)=> handleControlledInputChange(event)}/>
                             </fieldset>
             </div>

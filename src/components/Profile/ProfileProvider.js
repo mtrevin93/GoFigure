@@ -42,6 +42,13 @@ export const ProfileProvider = (props) => {
       .then(getSavedFigs)
 }
 
+const deleteCollection = (collectionId) => {
+  return fetch(`http://localhost:8088/collections/${collectionId}`, {
+    method: "DELETE"
+  })
+    .then(getCollections)
+}
+
 const updateFig = savedFig => {
   return fetch(`http://localhost:8088/savedFigs/${savedFig.id}`, {
           method: "PUT",
@@ -69,7 +76,9 @@ const addCollection = collection => {
         <ProfileContext.Provider value ={{
             savedFigs, getSavedFigs, collections, getCollections, 
             removeFig, addCollection, updateFig,
-            users, getUsers, collection, showCollectionForm, setShowCollectionForm
+            users, getUsers, collection, showCollectionForm, setShowCollectionForm,
+            deleteCollection
+
         }}>
             {props.children}
         </ProfileContext.Provider>
