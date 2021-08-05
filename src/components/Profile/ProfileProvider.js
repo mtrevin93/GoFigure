@@ -8,6 +8,7 @@ export const ProfileProvider = (props) => {
   const [ collections, setCollections ] = useState([])
   const [collectionUsers, setCollectionUsers] = useState([])
   const [users, setUsers] = useState([])
+  const [ showCollectionForm, setShowCollectionForm ] = useState(false)
 
   const [collection, setCollection] = useState({
 
@@ -41,6 +42,18 @@ export const ProfileProvider = (props) => {
       .then(getSavedFigs)
 }
 
+const updateFig = savedFig => {
+  return fetch(`http://localhost:8088/savedFigs/${savedFig.id}`, {
+          method: "PUT",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(savedFig)
+      })
+      .then(response => response.json())
+      .then(getSavedFigs)
+  }
+
 const addCollection = collection => {
   return fetch("http://localhost:8088/collections", {
           method: "POST",
@@ -55,8 +68,8 @@ const addCollection = collection => {
     return (
         <ProfileContext.Provider value ={{
             savedFigs, getSavedFigs, collections, getCollections, 
-            removeFig, addCollection,
-            users, getUsers, collection
+            removeFig, addCollection, updateFig,
+            users, getUsers, collection, showCollectionForm, setShowCollectionForm
         }}>
             {props.children}
         </ProfileContext.Provider>

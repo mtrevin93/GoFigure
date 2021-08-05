@@ -9,7 +9,7 @@ export const Post = ({savedFig}) => {
 
     useEffect(() => {
         getParts()
-        .then(getCollections())
+        .then(getCollections)
     }, [])
 
 const relatedCollection = collections.find(collection => collection.id === savedFig?.collectionId)
@@ -17,7 +17,7 @@ const relatedCollection = collections.find(collection => collection.id === saved
 return (
     <>
 <section class="section">
-    <section class="hero is-link">
+    <section class="hero is-link is-small">
   <div class="hero-body">
     <p class="title">
     {savedFig?.user.username} added 

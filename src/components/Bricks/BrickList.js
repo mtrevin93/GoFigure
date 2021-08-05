@@ -12,9 +12,13 @@ useEffect(() => {
 
     return(
     <section class="section">
-            <h2 class="title">
-                My Collection
-            </h2>
+ <section class="hero is-success is-small">
+  <div class="hero-body">
+    <p class="title">
+      My Parts Collection
+    </p>
+  </div>
+</section>
         <div class="columns is-multiline">
             {parts.map(part => {
                 if(part.userId === parseInt(sessionStorage.getItem("GoFigure_user")) && part.isAvailable === true){

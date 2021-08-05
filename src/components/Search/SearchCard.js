@@ -49,7 +49,7 @@ return (
         <figure class="image is-square">
             <img src={minifig.set_img_url}/>
         </figure>
-        <div class="subtitle my-1">{minifig.name}</div>
+        <div class="box my-1">{minifig.name}</div>
     </div>
     <div class="column is-1 my-2">
         <button class="button is-success mt-6" onClick={event => {

@@ -18,3 +18,17 @@
     margin-left:10em;
     margin-right:10em;
 }
+
+#name{
+    font-size: 2em;
+}
+#description{
+    font-size: 1em;
+    width: 25em;
+    height: 3em;
+    font-size: 1em;
+}
+#names{
+    display: flex;
+    flex-direction: column;
+}

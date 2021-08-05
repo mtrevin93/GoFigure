@@ -14,11 +14,11 @@ const handleClickRemoveBrick = () => {
 return (
     <>
     <div class="column is-2 my-2 height">
-        <figure class="image is-square">
-            <img src={part.img}/>
+        <figure class="image is-128x128">
+            <img class= "image is-128x128" src={part.img}/>
         </figure>
-        <text class="textarea is-small my-1">{part.name}</text>
-        <button class="button is-danger is-small mt-2" onClick={event => {
+        <div class="box box-radius-large my-1">{part.name}</div>
+        <button class="button is-danger is-small is mt-2" onClick={event => {
             event.preventDefault()
             handleClickRemoveBrick()
         }}>

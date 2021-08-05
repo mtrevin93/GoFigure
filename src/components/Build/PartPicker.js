@@ -32,7 +32,7 @@ const myLegs = parts.filter(part => part.userId
     const [headCounter, setHeadCounter] = useState(0)
     const [torsoCounter, setTorsoCounter] = useState(0)
     const [legsCounter, setLegsCounter] = useState(0)
-    const [ showPartDetails, setShowPartDetails ] = useState(false)
+    const [ showPartDetails, setShowPartDetails ] = useState(true)
     
       const downHeadCounter = () => {
     
@@ -275,10 +275,14 @@ const checkLegs = (newMinifigure) => {
 
 return(
 <>
-    <section class="section">
-    <h2 class="title m-3">
-        Build a Minifigure
-    </h2>
+<section class="section">
+ <section class="hero is-success is-small">
+  <div class="hero-body">
+    <p class="title">
+      Mix And Match Your LEGO Bricks
+    </p>
+  </div>
+</section>
     <div class="columns is-multiline">
         <div class="column is-2 my-2">
             <div class="rows">

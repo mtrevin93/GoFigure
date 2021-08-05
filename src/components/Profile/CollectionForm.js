@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom"
 
 export const CollectionForm = () => {
 
-const { addCollection } = useContext(ProfileContext)
+const { addCollection, showCollectionForm, setShowCollectionForm } = useContext(ProfileContext)
 const [collection, setCollection] = useState({
 
     name: "",
@@ -12,8 +12,13 @@ const [collection, setCollection] = useState({
 
   });
 
+  const toggleShowCollectionForm = () => {
+    const view = showCollectionForm
+    setShowCollectionForm(!view)
+}
+
+
 const history = useHistory()
-const [ userString, setUserString ] = useState("")
 
   const handleControlledInputChange = (event) => {
       /* When changing a state object or array,
@@ -49,33 +54,24 @@ const handleClickCreateCollection = (event) => {
     }
     
 return(
-<section class="section">
-    <h2 class="title">
+  
+<div class="my-6">
+    <h2 class="title my-2">
         Create a Collection
     </h2>
-    <div>
-    <div class="field">
-        <label class="label">Name Your Collection:</label>
-        <fieldset>
+        <label class="label my-3">Name Your Collection:</label>
             <div class="form-group">
               <input class="input nameTextInput" type="text is-large"  id="name" required autoFocus class="form-control" placeholder="Name" value={collection.name} onChange={handleControlledInputChange} 
               defaultValue=""/>
-            </div>
-        </fieldset>
-    </div>
-    <div class="field">
-        <label class="label">Give Your Collection a Description:</label>
-        <fieldset>
+        <label class="label my-3">Give Your Collection a Description:</label>
             <div class="form-group">
               <input class="input descriptionTextInput" type="text is-large"  id="description" required autoFocus class="form-control" placeholder="Description" value={collection.description} onChange={handleControlledInputChange} 
               defaultValue=""/>
-            </div>
-        </fieldset>
     </div>
-    <button class="button is-success" onClick={handleClickCreateCollection}>
-        Save Collection
+    <button class="button is-success my-5" onClick={handleClickCreateCollection} onClick={toggleShowCollectionForm}>
+        {collection.name === "" || collection.description ===""?<p>Cancel </p> : <p>Save Collection</p>}
     </button>
     </div> 
-</section>
+    </div>
 
 )}

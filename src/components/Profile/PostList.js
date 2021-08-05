@@ -17,11 +17,9 @@ export const PostList = () => {
    const posts = sortedFigs.filter(fig => fig.collectionId)  
 
 return(
-<div class="">
-    <div class="">
-    </div>
+<div class="columns is-multiline">
 
-    <div class="">
+    <div class="columns is-multiline">
         {posts.map(savedFig => {
         return <Post key={savedFig.id} savedFig={savedFig}/>})}
     </div>

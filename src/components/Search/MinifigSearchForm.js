@@ -78,28 +78,17 @@ export const MinifigSearchForm = () => {
 
     return (
         <>
-        <div class="header rows">
-            <div class="row">
-            <div class="title m-6">
-                Search for Parts By Minifigure
-            </div>
-            </div>
-            <div class="row m-6">
-                <div className="wrg-toggle">
-                <div className="wrg-toggle-container">
-                <div className="wrg-toggle-check">
-                    {/* <span>🌜</span> */}
-                </div>
-                <div className="wrg-toggle-uncheck">
-                    {/* <span>🌞</span> */}
-                </div>
-                </div>
-                <div className="wrg-toggle-circle"></div>
-                <input className="wrg-toggle-input" type="checkbox" aria-label="Toggle Button" />
-            </div>
-        </div>
-
-        </div>
+        
+        <section class="hero is-link is-small m-3 mt-6">
+  <div class="hero-body">
+    <p class="title">
+      Add LEGO Parts To Your Collection
+    </p>
+    <p class="subtitle m-1">
+      Start By Searching For Minifigures by Theme
+    </p>
+  </div>
+</section>
 
         <div class="columns is-multiline">
 
@@ -112,7 +101,7 @@ export const MinifigSearchForm = () => {
             </div>
 
             <div class="field column is-one-eigth ml-3 mr-3 mt-6">
-                <label class="label">Theme</label>
+                <label class="label"><br/></label>
                     <div class="control">
                         <div class="select">
                         <select onChange={handleControlledInputChange}>

@@ -28,7 +28,7 @@ export const NavBar = (props) => {
   <div class="navbar-brand">
     <a class="navbar-item">
       <Link to="/">
-      <img class="image is-64x64" src="./images/Logo.png"/>
+      <img class="image is-64x64" src="./images/Logo3.png"/>
       </Link>
     </a>
 

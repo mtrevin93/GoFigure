@@ -29,21 +29,9 @@ return fetch("http://localhost:8088/savedFigs", {
     .then(response => response.json())
 }
 
-  const updateFig = savedFig => {
-    return fetch(`http://localhost:8088/savedFigs/${savedFig.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(savedFig)
-        })
-        .then(response => response.json())
-        // .then(getSavedFigs)
-    }
-
     return (
         <FigContext.Provider value ={{
-            minifigure, setMinifigure, postFig, updateFig
+            minifigure, setMinifigure, postFig
         }}>
             {props.children}
         </FigContext.Provider>
