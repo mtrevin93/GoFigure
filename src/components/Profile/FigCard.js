@@ -14,8 +14,19 @@ getCollections()
   }, [])
 
 const handleControlledInputChange = (event) => {
-    const newFig = {...savedFig}
-    newFig.collectionId = parseInt(event.target.value)
+    const newFig = {
+        "userId": savedFig.userId,
+        "headwearId": savedFig.headwearId,
+        "headId": savedFig.headId,
+        "torsoId": savedFig.torsoId,
+        "legsId": savedFig.legsId,
+        "name": savedFig.name,
+        "description": savedFig.description,
+        "img": savedFig.img,
+        "collectionId": parseInt(event.target.value),
+        "id": savedFig.id,
+      }
+
     updateFig(newFig)
 }
 
