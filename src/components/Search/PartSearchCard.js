@@ -37,7 +37,6 @@ const addPart = () => {
 }
 
 const handleClickAddAllParts = () => {
-    console.log(types)
     addPart()
 }
 

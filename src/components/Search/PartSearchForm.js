@@ -21,18 +21,13 @@ export const PartSearchForm = () => {
         /* When changing a state object or array,
         always create a copy, make changes, and then set state.*/
         const id = parseInt(event.target.id)
-        if (!partTypes.includes(id)){
-            partTypes.push(id)
-        }
-        else if (partTypes.includes(id)){
-            partTypes.pop(id)
-        }
+        setPartTypes(id)
     }
     
 const handleClickFindParts = () => {
-    partTypes.map(partType => {
-        getPartsBySearch(partType, partSearchTerms)
-    })
+
+        getPartsBySearch(partTypes, partSearchTerms)
+
 }
 
 const handleClickNavigate = () => {
@@ -48,11 +43,17 @@ return (
       Add LEGO Parts To Your Collection
     </p>
     <p class="subtitle m-1">
-      Start By Searching For Minifigures by Theme
+      Search For Individual Parts
     </p>
   </div>
 </section>
 
+            <button class="button is-info is-warning is-rounded m-6" onClick={event => {
+                event.preventDefault()
+                handleClickNavigate()
+            }}>
+                    Search By Minifigure
+            </button>
         <div class="columns is-multiline">
 
             <div class="field column is-one-half ml-6 mt-6">
@@ -65,22 +66,24 @@ return (
 
             <div class="field column is-one-eigth ml-3 mr-3 mt-6">    
                         <div class="subtitle">Select a Part Type</div>
+                        <div class="control">
                             <fieldset>
-                                <label class="headwear__label my-1">Headwear</label>
-                                <input type="checkbox" name="headwear" id="59" onChange={(event)=> handleControlledInputChange(event)}/>
+                                <label class="radio my-1">Headwear</label>
+                                <input type="radio" name="slot" id="65" onChange={(event)=> handleControlledInputChange(event)}/>
                             </fieldset>
                             <fieldset>
-                                <label class="headwear__label my-1">Head</label>
-                                <input type="checkbox" name="head" id="60" onChange={(event)=> handleControlledInputChange(event)}/>
+                                <label class="radio my-1">Head</label>
+                                <input type="radio" name="slot" id="59" onChange={(event)=> handleControlledInputChange(event)}/>
                             </fieldset>
                             <fieldset>
-                                <label class="headwear__label my-1">Torso</label>
-                                <input type="checkbox" name="torso" id="61" onChange={(event)=> handleControlledInputChange(event)}/>
+                                <label class="radio my-1">Torso</label>
+                                <input type="radio" name="slot" id="60" onChange={(event)=> handleControlledInputChange(event)}/>
                             </fieldset>
                             <fieldset>
-                                <label class="headwear__label my-1">Legs</label>
-                                <input type="checkbox" name="legs" id="65" onChange={(event)=> handleControlledInputChange(event)}/>
+                                <label class="radio my-1">Legs</label>
+                                <input type="radio" name="slot" id="61" onChange={(event)=> handleControlledInputChange(event)}/>
                             </fieldset>
+                        </div>
             </div>
 
             <div class="column is one-eigth mt-6">
@@ -92,13 +95,7 @@ return (
                 </button>
             </div>
             </div>
-            <PartSearchList parts={partSearch}/>
-            <button class="button is-info is-warning is-rounded m-6" onClick={event => {
-                    event.preventDefault()
-                    handleClickNavigate()
-                }}>
-                    Search By Minifigure
-            </button>
+                    <PartSearchList parts={partSearch}/>
 
     </>
 )

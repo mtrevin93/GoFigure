@@ -42,7 +42,6 @@ export const MinifigSearchForm = () => {
     const handleControlledInputChange = (event) => {
         /* When changing a state object or array,
         always create a copy, make changes, and then set state.*/
-        console.log(event.target.value)
         const id = parseInt(event.target.value)
         const specificEvent = event.target[id]
         if (specificEvent?.label?.includes("'")){
@@ -97,6 +96,12 @@ const handleClickNavigate = () => {
   </div>
 </section>
 
+        <button class="button is-info is-warning is-rounded m-6" onClick={event => {
+                    event.preventDefault()
+                    handleClickNavigate()
+                }}>
+                    Search By Part
+        </button>
         <div class="columns is-multiline">
 
             <div class="field column is-one-half ml-6 mt-6">
@@ -137,12 +142,6 @@ const handleClickNavigate = () => {
                 </button>
             </div>
         </div>
-        <button class="button is-info is-warning is-rounded m-6" onClick={event => {
-                    event.preventDefault()
-                    handleClickNavigate()
-                }}>
-                    Search By Part
-        </button>
             <SearchList collection={collectionSearch} minifigs={figSearch} savedFigs={savedFigs}/>
     </>
     
