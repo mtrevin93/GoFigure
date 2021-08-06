@@ -24,13 +24,14 @@ const handleControlledInputChange = (event) => {
         "description": savedFig.description,
         "img": savedFig.img,
         "collectionId": parseInt(event.target.value),
-        "id": savedFig.id,
+        "id": savedFig.id
       }
     updateFig(newFig)
 }
 
-const handleClickRemoveFig = () => {
-    removeFig(savedFig.id)
+const handleClickRemoveFig = (event) => {
+    const figId = parseInt(event.target.id)
+    removeFig(figId)
 }
 
 return (
@@ -61,7 +62,7 @@ return (
                         </select>
         <button class="button is-danger is-small my-5" id={savedFig.id} onClick={event => {
             event.preventDefault()
-            handleClickRemoveFig()}}>
+            handleClickRemoveFig(event)}}>
             Delete
             </button>
                 </div>

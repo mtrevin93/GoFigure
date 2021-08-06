@@ -24,7 +24,7 @@ export const ProfileProvider = (props) => {
     }
 
   const getSavedFigs = () => {
-    return fetch(`http://localhost:8088/savedFigs?_expand=collection&_expand=user`)
+    return fetch(`http://localhost:8088/savedFigs`)
     .then(res => res.json())
     .then(setSavedFigs)
   }
@@ -35,8 +35,8 @@ export const ProfileProvider = (props) => {
     .then(setCollections)
   }
 
-  const removeFig = (savedFigId) => {
-    return fetch(`http://localhost:8088/savedFigs/${savedFigId}`, {
+  const removeFig = (figId) => {
+    return fetch(`http://localhost:8088/savedFigs/${figId}`, {
       method: "DELETE"
     })
       .then(getSavedFigs)
