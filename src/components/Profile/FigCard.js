@@ -37,7 +37,7 @@ return (
     <>
     {savedFig.img? 
     <div class="column is-2">
-        <img class = "image is-3by-4" src={savedFig.img}/>
+        <img class = "image is-5by-6" src={savedFig.img}/>
     </div>
     : 
     <div class="column is-2 my-2">

@@ -17,10 +17,8 @@ const {  savedFigs, getSavedFigs, collections, getCollections,
     }
 
 useEffect(() => {
-    getSavedFigs()
-    .then(getCollections)
-    .then(getCollectionUsers)
-}, [])
+    getCollections()
+}, [showCollectionForm])
 
 const handleClickShowCollectionForm = () => {
     history.push("/collection")
@@ -50,13 +48,15 @@ const handleClickShowCollectionForm = () => {
         {
             return <CollectionCard showCollectionForm={showCollectionForm} key={collection.id} collection={collection} collectionUsers={collectionUsers}/>}})}
 
-
+    {showCollectionForm === false? 
     <button class="button is-pulled-left is-primary"onClick={event => {
         event.preventDefault()
         toggleShowCollectionForm()
     }}>
        Create a Collection
     </button>
+    :
+    null}
     <div class="section">
     {showCollectionForm === true? <CollectionForm/> : null}
     </div>

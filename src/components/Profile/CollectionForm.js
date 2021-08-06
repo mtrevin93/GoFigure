@@ -33,15 +33,15 @@ const history = useHistory()
   }
 
 const handleClickCreateCollection = (event) => {
-  
+
     const newCollection = {...collection}
     if( newCollection.name="" || newCollection.description===""){
-        window.alert("Your collection needs a name and description")
         return
     }
     else{
         newCollection.name = collection.name
         newCollection.userId = parseInt(sessionStorage.getItem("GoFigure_user"))
+ 
         addCollection(newCollection)
     }
 
@@ -68,7 +68,11 @@ return(
               <input class="input descriptionTextInput" type="text is-large"  id="description" required autoFocus class="form-control" placeholder="Description" value={collection.description} onChange={handleControlledInputChange} 
               defaultValue=""/>
     </div>
-    <button class="button is-success my-5" onClick={handleClickCreateCollection} onClick={toggleShowCollectionForm}>
+    <button class="button is-success my-5" onClick={event => {
+        event.preventDefault()
+        handleClickCreateCollection()
+        toggleShowCollectionForm()
+    }}>
         {collection.name === "" || collection.description ===""?<p>Cancel </p> : <p>Save Collection</p>}
     </button>
     </div> 
