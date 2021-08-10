@@ -18,6 +18,7 @@ const {  savedFigs, getSavedFigs, collections, getCollections,
 
 useEffect(() => {
     getCollections()
+    .then(getSavedFigs)
 }, [showCollectionForm])
 
 const handleClickShowCollectionForm = () => {

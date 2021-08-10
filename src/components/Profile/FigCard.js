@@ -11,6 +11,7 @@ const { parts, getParts } = useContext(CollectionContext)
 
 useEffect(() => {
 getCollections()
+.then(getParts)
   }, [])
 
 const handleControlledInputChange = (event) => {
