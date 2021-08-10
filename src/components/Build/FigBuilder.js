@@ -60,6 +60,7 @@ const uploadImage = () => {
             }
             else{
                 newMinifigure.name = minifigure.name
+                newMinifigure.collectionId = null
                 postFig(newMinifigure)
                 const resetMinifigure = {
                 userId: 0,
@@ -70,7 +71,7 @@ const uploadImage = () => {
                 name: "",
                 description: "",
                 img: null,
-                collectionId: 0
+                collectionId: null
                 }
                 setMinifigure(resetMinifigure)
                 history.push("/profile")

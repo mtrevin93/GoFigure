@@ -1,12 +1,10 @@
 import React, { useContext, useEffect } from "react"
 import { ProfileContext } from "./ProfileProvider"
 import { CollectionContext } from "../Bricks/CollectionProvider"
-import { FigContext } from "../Build/FigProvider"
 
 export const FigCard = ({ savedFig }) => {
 
-const { removeFig, collections, getCollections, 
-    addFigToCollection, removeFigFromCollection, updateFig} = useContext(ProfileContext)
+const { removeFig, collections, getCollections, updateFig} = useContext(ProfileContext)
 const { parts, getParts } = useContext(CollectionContext)
 
 useEffect(() => {
@@ -31,7 +29,7 @@ const handleControlledInputChange = (event) => {
 }
 
 const handleClickRemoveFig = () => {
-    removeFig(savedFig)
+    removeFig(savedFig.id)
 }
 
 return (
@@ -58,11 +56,9 @@ return (
                                 {collection.name}
                                 </option>
                             })}
-                            {savedFig.collectionId ===0? null : <option value="0">Remove From Collection</option>}
+                            {savedFig.collectionId ===null? null : <option value="null">Remove From Collection</option>}
                         </select>
-        <button class="button is-danger is-small my-5" id={savedFig.id} onClick={event => {
-            event.preventDefault()
-            handleClickRemoveFig()}}>
+        <button class="button is-danger is-small my-5" id={savedFig.id} onClick={handleClickRemoveFig}>
             Delete
             </button>
                 </div>

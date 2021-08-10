@@ -14,7 +14,7 @@ const [minifigure, setMinifigure] = useState({
     name: "",
     description: "",
     img: null,
-    collectionId:0
+    collectionId:null
 
   });
 

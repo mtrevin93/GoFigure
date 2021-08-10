@@ -38,7 +38,7 @@ const handleClickShowCollectionForm = () => {
         <div class="columns is-multiline">
             {savedFigs.map(savedFig => {
                 if(savedFig.userId === parseInt(sessionStorage.getItem("GoFigure_user"))
-                && (savedFig.collectionId === 0))
+                && (savedFig.collectionId === null))
                 { 
                 return <FigCard key={savedFig.id} savedFig={savedFig}/>}})}
         </div>
