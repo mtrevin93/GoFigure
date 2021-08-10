@@ -35,8 +35,8 @@ export const ProfileProvider = (props) => {
     .then(setCollections)
   }
 
-  const removeFig = (figId) => {
-    return fetch(`http://localhost:8088/savedFigs/${figId}`, {
+  const removeFig = (savedFig) => {
+    return fetch(`http://localhost:8088/savedFigs/${savedFig.id}`, {
       method: "DELETE"
     })
       .then(getSavedFigs)

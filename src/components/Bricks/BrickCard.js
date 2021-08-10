@@ -6,8 +6,15 @@ export const BrickCard = ({ part }) => {
 const { updatePart } = useContext(CollectionContext)
 
 const handleClickRemoveBrick = () => {
-    const newPart = {...part}
+    const newPart = {}
+    newPart.userId = part.userId
+    newPart.rebrickableId = part.rebrickableId
+    newPart.typeId = part.typeId
+    newPart.img = part.img
+    newPart.name = part.name
+    newPart.bricklinkId = part.bricklinkId
     newPart.isAvailable = false
+    newPart.id = part.id
     updatePart(newPart)
 }
 
