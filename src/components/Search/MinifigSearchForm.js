@@ -64,7 +64,7 @@ export const MinifigSearchForm = () => {
             setCollectionSearch(searchFound)
         }
         else{
-        setCollectionSearch([])
+        setCollectionSearch([]) 
         {getMinifigsByTheme(theme.id, 1)}
         }
 
@@ -143,7 +143,6 @@ const handleClickNavigate = () => {
             </div>
         </div>
             <SearchList collection={collectionSearch} minifigs={figSearch} savedFigs={savedFigs}/>
-    </>
-    
+    </> 
 )
 }

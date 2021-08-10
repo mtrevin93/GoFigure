@@ -10,7 +10,7 @@ const { parts, getParts } = useContext(CollectionContext)
 useEffect(() => {
     getParts()
 },[])
-
+console.log(minifig)
 const getFigParts = () => {
         getFigNum(minifig.set_num).then((res) => {res.results.map(piece => {
         types.find(type => (piece.part.part_cat_id === type.id))

@@ -11,7 +11,7 @@ useEffect(() => {
     getTypes()
   }, [])
 
-const collectionFigs = savedFigs.filter(fig => collection.id === fig.collectionId)
+const collectionFigs = savedFigs.filter(fig => collection.id === fig.groupId)
 
     return(
     <section class="section">
