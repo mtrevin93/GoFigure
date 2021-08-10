@@ -29,6 +29,7 @@ const handleControlledInputChange = (event) => {
 }
 
 const handleClickRemoveFig = () => {
+    debugger
     removeFig(savedFig.id)
 }
 
