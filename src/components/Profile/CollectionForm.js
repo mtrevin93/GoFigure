@@ -70,8 +70,8 @@ return(
     </div>
     <button class="button is-success my-5" onClick={event => {
         event.preventDefault()
-        handleClickCreateCollection()
         toggleShowCollectionForm()
+        handleClickCreateCollection()
     }}>
         {collection.name === "" || collection.description ===""?<p>Cancel </p> : <p>Save Collection</p>}
     </button>

@@ -12,7 +12,7 @@ export const Post = ({savedFig}) => {
         .then(getCollections)
     }, [])
 
-const relatedCollection = collections.find(collection => collection.id === savedFig?.collectionId)
+const relatedCollection = collections.find(collection => collection.id === savedFig?.groupId)
 
 return (
     <>

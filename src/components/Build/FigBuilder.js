@@ -47,7 +47,7 @@ const uploadImage = () => {
 
         const newMinifigure = {...minifigure}
         newMinifigure.name = minifigure.name
-        newMinifigure.collectionId = 0
+        newMinifigure.groupId = null
         newMinifigure.userId = parseInt(sessionStorage.getItem("GoFigure_user"))
 
             if(minifigure.headwearId === 0 || minifigure.headId === 0 || 
@@ -60,7 +60,7 @@ const uploadImage = () => {
             }
             else{
                 newMinifigure.name = minifigure.name
-                newMinifigure.collectionId = null
+                newMinifigure.groupId = null
                 postFig(newMinifigure)
                 const resetMinifigure = {
                 userId: 0,
@@ -71,7 +71,7 @@ const uploadImage = () => {
                 name: "",
                 description: "",
                 img: null,
-                collectionId: null
+                groupId: null
                 }
                 setMinifigure(resetMinifigure)
                 history.push("/profile")

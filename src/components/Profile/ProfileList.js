@@ -24,7 +24,7 @@ useEffect(() => {
 const handleClickShowCollectionForm = () => {
     history.push("/collection")
 }
-
+debugger
     return(
     
         <section class="section">
@@ -38,7 +38,7 @@ const handleClickShowCollectionForm = () => {
         <div class="columns is-multiline">
             {savedFigs.map(savedFig => {
                 if(savedFig.userId === parseInt(sessionStorage.getItem("GoFigure_user"))
-                && (savedFig.collectionId === null))
+                && (savedFig.groupId === null))
                 { 
                 return <FigCard key={savedFig.id} savedFig={savedFig}/>}})}
         </div>

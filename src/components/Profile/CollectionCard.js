@@ -5,7 +5,7 @@ import { FigCard } from "./FigCard"
 
 export const CollectionCard = ({ collection, showCollectionForm }) => {
 
-const { savedFigs, getSavedFigs, deleteCollection  } = useContext(ProfileContext)
+const { savedFigs, getSavedFigs, deleteCollection, setShowCollectionForm  } = useContext(ProfileContext)
 const { getParts} = useContext(CollectionContext)
 
 useEffect(() => {
@@ -15,9 +15,15 @@ useEffect(() => {
 
 const handleClickDeleteCollection = () => {
 deleteCollection(collection.id)
+toggleShowCollectionForm()
 }
 
-const filteredFigs = savedFigs.filter(savedFig=> savedFig?.collectionId === collection.id)
+const toggleShowCollectionForm = () => {
+  const view = showCollectionForm
+  setShowCollectionForm(!view)
+}
+
+const filteredFigs = savedFigs.filter(savedFig=> savedFig?.groupId === collection.id)
 return (
     <>
             <section class="section">

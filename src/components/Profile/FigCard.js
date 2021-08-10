@@ -22,14 +22,13 @@ const handleControlledInputChange = (event) => {
         "name": savedFig.name,
         "description": savedFig.description,
         "img": savedFig.img,
-        "collectionId": parseInt(event.target.value),
+        "groupId": parseInt(event.target.value),
         "id": savedFig.id
       }
     updateFig(newFig)
 }
 
 const handleClickRemoveFig = () => {
-    debugger
     removeFig(savedFig.id)
 }
 
@@ -57,7 +56,7 @@ return (
                                 {collection.name}
                                 </option>
                             })}
-                            {savedFig.collectionId ===null? null : <option value="null">Remove From Collection</option>}
+                            {savedFig.groupId ===null? null : <option value="null">Remove From Collection</option>}
                         </select>
         <button class="button is-danger is-small my-5" id={savedFig.id} onClick={handleClickRemoveFig}>
             Delete

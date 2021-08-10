@@ -14,7 +14,7 @@ export const PostList = () => {
    const figs = [...savedFigs ]
    // sort the copied Figs array by timestamp newest post to oldest post
    const sortedFigs = figs.sort((a, b) => b.id - a.id) 
-   const posts = sortedFigs.filter(fig => fig.collectionId)  
+   const posts = sortedFigs.filter(fig => fig.groupId)  
 
 return(
 
