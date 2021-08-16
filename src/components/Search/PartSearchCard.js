@@ -22,9 +22,6 @@ const addPart = () => {
             "bricklinkId": part.external_ids?.BrickLink? part.external_ids.BrickLink[0] : null,
             "isAvailable": true
         }
-        if(parts.some(brick => brick.rebrickableId === part.part_num && brick.isAvailable && brick.userId === parseInt(sessionStorage.getItem("GoFigure_user")))){
-        }
-        else{
         return fetch("http://localhost:8088/parts", {
             method: "POST",
             headers: {
@@ -34,7 +31,7 @@ const addPart = () => {
             })
         .then(getParts)
 }
-}
+
 
 const handleClickAddAllParts = () => {
     addPart()

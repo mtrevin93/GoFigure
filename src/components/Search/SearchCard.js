@@ -23,10 +23,8 @@ const getFigParts = () => {
             "bricklinkId": piece.part.external_ids?.BrickLink? piece.part.external_ids.BrickLink[0] : null,
             "isAvailable": true
         }
-        if(parts.some(brick => brick.rebrickableId === piece.part.part_num && brick.isAvailable && brick.userId === parseInt(sessionStorage.getItem("GoFigure_user")))){
-            console.log("Part already in user inventory")
-        }
-        else{
+
+
         return fetch("http://localhost:8088/parts", {
             method: "POST",
             headers: {
@@ -34,7 +32,7 @@ const getFigParts = () => {
             },
             body: JSON.stringify(part)
             })
-        }})})
+        })})
         .then(getParts)
 }
 
