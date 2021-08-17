@@ -19,16 +19,16 @@ Here users can see all of the minifigures they have created, delete minifigures,
 # Technologies Used
 
 ## Front-end
-HTML5
-CSS3
-JS ES6
-React JS Library
-Bulma CSS Framework
+* HTML5  
+* CSS3
+* JS ES6
+* React JS Library
+* Bulma CSS Framework
 
 ## Data
-JSON Server
-Rebrickable API
-Cloudinary API
+* JSON Server
+* Rebrickable API
+* Cloudinary API
 
 ![ERD](/public/images/GoFigureERD.png)
 
