@@ -66,27 +66,32 @@ You will need these resources in your JSON database. "Types" collection must hav
       "rebrickableId": 65,
       "name": "headwear"
     },
-`
+`  
+
 `
     {
       "id": 2,
       "rebrickableId": 59,
       "name": "head"
     },
-`
+`  
+
 `
     {
       "id": 3,
       "rebrickableId": 60,
       "name": "torso"
     },
+`  
+
 `
     {
       "id": 4,
       "rebrickableId": 61,
       "name": "bottom"
     },
-`
+`  
+
 `
     {
       "id": 5,
