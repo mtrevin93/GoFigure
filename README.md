@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+GoFigure
+GoFigure is a LEGO minifigure builder created for LEGO enthusiasts of all ages. It helps users get inspiration for new builds, express their creativity, and share that creativity with other users. Whether users wish to build a custom minifigure or use GoFigure to help them find that brick they didn't know they needed, GoFigure is a go-to LEGO minifigure companion.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Search Mode
+Users have personal virtual inventories, which are banks of all pieces that will be available to them when building. They can add pieces to or delete them from their virtual inventories. Users find new pieces to add by searching either for complete official LEGO minifigures, narrowed by themes or pulled from the collections of other users. Users can also search for individual pieces by search term and part type.
 
-## Available Scripts
+![Search Mode](/public/images/Search.gif)
 
-In the project directory, you can run:
+Build Mode
+This is where users can mix and match pieces from their virtual inventories to create a LEGO minifigure. Users can also view details, including the Bricklink ID for a given piece, which can be used in conjunction with the link to Mecabricks 3D builder available from this page to create a 3D rendering of their minifigure. Users can also use this ID should they wish to round out their physical collection by buying the related brick. After users have selected their bricks, they can their figure a description and name and upload a photo.
 
-### `npm start`
+![Build Mode](/public/images/FigBuilder.gif)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Profile
+Here users can see all of the minifigures they have created, delete minifigures, or create/delete collections. Collections are publicly viewed from the home screen by all users and can be searched similarly to official LEGO minifigures in the add parts section of the app. Minifigures that have not been added to a collection yet are private.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Profile](/public/images/ProfilePage.png)
 
-### `npm test`
+Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Front-end
+HTML5
+CSS3
+JS ES6
+React JS Library
+Bulma CSS Framework
 
-### `npm run build`
+Data
+JSON Server
+Rebrickable API
+Cloudinary API
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![ERD](/public/images/GoFigureERD.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Running The App
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Setup: Follow these steps exactly
+Create an API directory that will have .json data
+Clone this repository
+cd into the directory it creates
+Run json-server -p 8088 -w database.json from the api directory.
+Run npm install and wait for all dependencies to be installed.
+Run npm start to verify that installation was successful.
+Run npm install sweetalert2 to install Sweetalert2.
+Run npm install react-image-gallery to install the image gallery.
+Run npm install react-rating-stars-component --save to install the stars rating.
+Run npm install bootstrap to install Bootstrap.
+Note: Your database.json file is already in the .gitignore file for this project, so it will never be added to the repo or pushed to Github.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You will need these resources in your JSON database. "Types" collection must have this data to run the app as is.
+{
+ "users": [
+    {
+      "id": 1,
+      "name": "Michael Trevino",
+      "username": "Mat93"
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "rebrickableId": 65,
+      "name": "headwear"
+    },
+    {
+      "id": 2,
+      "rebrickableId": 59,
+      "name": "head"
+    },
+    {
+      "id": 3,
+      "rebrickableId": 60,
+      "name": "torso"
+    },
+    {
+      "id": 4,
+      "rebrickableId": 61,
+      "name": "bottom"
+    },
+    {
+      "id": 5,
+      "rebrickableId": 27,
+      "name": "accessory"
+    }
+  ],
+  "parts"[],
+  "savedFigs"[],
+  "collections"[]
+}

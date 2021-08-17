@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom"
 
 export const FigBuilder = () => {
     
-    const { minifigure, setMinifigure, updateFig, postFig } = useContext(FigContext)
+    const { minifigure, setMinifigure, postFig } = useContext(FigContext)
     const { parts } = useContext(CollectionContext)
     const [image, setImage ] = useState("");
     const history=useHistory()
