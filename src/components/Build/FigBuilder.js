@@ -3,6 +3,7 @@ import { FigContext } from "./FigProvider"
 import { CollectionContext } from "../Bricks/CollectionProvider"
 import "./FigBuilder.css"
 import { useHistory } from "react-router-dom"
+import { cloudinaryAPIkey } from "../apikey"
 
 export const FigBuilder = () => {
     
@@ -17,8 +18,8 @@ const uploadImage = () => {
     const data = new FormData()
     data.append("file", image)
     data.append("upload_preset", "minifigure")
-    data.append("minifigure","drpheklfx")
-    fetch("  https://api.cloudinary.com/v1_1/drpheklfx/image/upload",{
+    data.append(`minifigure,${cloudinaryAPIkey}`)
+    fetch(`https://api.cloudinary.com/v1_1/${cloudinaryAPIkey}/image/upload`,{
     method:"post",
     body: data
     })
